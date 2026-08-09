@@ -1,0 +1,226 @@
+syntax = "proto3";
+
+package fanti.v1;
+
+import "fanti/v1/common.proto";
+import "fanti/v1/book.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// A script-conversion job over an uploaded file. The wizard flow:
+// CreateConversion (upload + analysis) → UpdateConversion (settings/layout) →
+// RunConversion (async; poll GetConversion for progress) → report on the
+// resource → ResolveException / ExportConversion / AddConversionToLibrary.
+message Conversion {
+  option (google.api.resource) = {
+    type: "fanti.app/Conversion"
+    pattern: "conversions/{conversion}"
+    singular: "conversion"
+    plural: "conversions"
+  };
+
+  // Job state machine.
+  enum State {
+    STATE_UNSPECIFIED = 0;
+    // Analyzed and awaiting settings / run.
+    STATE_READY = 1;
+    STATE_RUNNING = 2;
+    STATE_SUCCEEDED = 3;
+    STATE_FAILED = 4;
+  }
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  State state = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // --- Analysis of the uploaded file (output only) ---
+  string filename = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  FileFormat format = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  Script detected_script = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int64 char_count = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Occurrences of each section-marker unit (章/節/回/篇/卷/部).
+  repeated UnitCount unit_counts = 7 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // --- Editable settings ---
+  ConversionSettings settings = 8;
+  BookLayout layout = 9;
+
+  // --- Progress & result ---
+  // 0-100 while RUNNING.
+  int32 progress_percent = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+  ConversionReport report = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Human-readable failure reason when FAILED.
+  string error_message = 12 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  google.protobuf.Timestamp create_time = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
+  google.protobuf.Timestamp update_time = 14 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// Occurrence count for one chapter-marker unit.
+message UnitCount {
+  // The marker character: 章, 節, 回, 篇, 卷, or 部.
+  string unit = 1;
+  int32 count = 2;
+}
+
+message ConversionSettings {
+  ConversionDirection direction = 1;
+  // Localize vocabulary for the target region (软件→軟體, 信息→資訊).
+  bool localize_vocabulary = 2;
+  // Convert quote styles ("…" ⇄ 「…」).
+  bool convert_punctuation = 3;
+}
+
+// Output book layout choices from the wizard's editors.
+message BookLayout {
+  string title = 1;
+  string author = 2;
+  // Cover background hex color.
+  string cover_color = 3;
+  // Title font key: "kai", "serif", or "brush".
+  string title_font = 4;
+  // Body font key: "kai", "serif", or "brush".
+  string body_font = 5;
+  // Detected chapter titles, editable and removable.
+  repeated string chapter_titles = 6;
+  // Front-matter page text printed before chapter one.
+  string front_matter = 7;
+  // Indent first line of paragraphs by two em spaces.
+  bool indent_first_line = 8;
+}
+
+// Result of a completed run.
+message ConversionReport {
+  int64 exact_count = 1;
+  int64 ambiguous_count = 2;
+  int64 manual_count = 3;
+  int64 total_substitutions = 4;
+  repeated ConversionException exceptions = 5;
+  DiffPreview diff = 6;
+}
+
+// A one-to-many mapping needing review (发 → 髮/發).
+message ConversionException {
+  // The source character as it appears in the input.
+  string source_char = 1;
+  // Candidate target forms, first is the engine's pick.
+  repeated string options = 2;
+  // Explanation of the ambiguity.
+  LocalizedText note = 3;
+  // Example usage from the text, e.g. 「心里」 → 心裡.
+  string context = 4;
+  MappingStatus status = 5;
+  // The user's confirmed choice; empty until resolved.
+  string resolved = 6;
+}
+
+// A short before/after excerpt with per-token mapping status.
+message DiffPreview {
+  string source_text = 1;
+  repeated DiffToken tokens = 2;
+}
+
+message DiffToken {
+  string text = 1;
+  // UNSPECIFIED for unchanged characters.
+  MappingStatus status = 2;
+}
+
+message CreateConversionRequest {
+  Conversion conversion = 1;
+  // Client-chosen id; server generates one when empty.
+  string conversion_id = 2;
+  // The uploaded file.
+  string filename = 3 [(google.api.field_behavior) = REQUIRED];
+  bytes data = 4 [(google.api.field_behavior) = REQUIRED];
+}
+
+message GetConversionRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Conversion"}
+  ];
+}
+
+message ListConversionsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListConversionsResponse {
+  repeated Conversion conversions = 1;
+  string next_page_token = 2;
+}
+
+message UpdateConversionRequest {
+  Conversion conversion = 1 [(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+message DeleteConversionRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Conversion"}
+  ];
+}
+
+message RunConversionRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Conversion"}
+  ];
+}
+
+message ResolveExceptionRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Conversion"}
+  ];
+  string source_char = 2 [(google.api.field_behavior) = REQUIRED];
+  // The chosen target form; must be one of the exception's options.
+  string resolved = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+message ExportConversionRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Conversion"}
+  ];
+}
+
+message ExportConversionResponse {
+  string filename = 1;
+  // EPUB3 bytes.
+  bytes data = 2;
+}
+
+message AddConversionToLibraryRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Conversion"}
+  ];
+}
+
+// Simplified ⇄ Traditional conversion jobs.
+service ConversionService {
+  // Uploads a file and analyzes it (format, script, chapters, counts).
+  rpc CreateConversion(CreateConversionRequest) returns (Conversion);
+  rpc GetConversion(GetConversionRequest) returns (Conversion);
+  rpc ListConversions(ListConversionsRequest) returns (ListConversionsResponse);
+  // Updates settings and layout while READY.
+  rpc UpdateConversion(UpdateConversionRequest) returns (Conversion);
+  rpc DeleteConversion(DeleteConversionRequest) returns (google.protobuf.Empty);
+
+  // Starts the conversion; returns immediately with state RUNNING.
+  // Poll GetConversion for progress_percent and the final report.
+  rpc RunConversion(RunConversionRequest) returns (Conversion);
+  // Confirms the target form for a one-to-many exception.
+  rpc ResolveException(ResolveExceptionRequest) returns (Conversion);
+  // Builds and returns the converted EPUB3.
+  rpc ExportConversion(ExportConversionRequest) returns (ExportConversionResponse);
+  // Stores the converted result as a library Book.
+  rpc AddConversionToLibrary(AddConversionToLibraryRequest) returns (Book);
+}

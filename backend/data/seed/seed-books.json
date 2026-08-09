@@ -1,0 +1,209 @@
+[
+  {
+    "id": "skt",
+    "title": "三國演義",
+    "titleEnglish": "Three Kingdoms",
+    "author": "羅貫中",
+    "meta": "羅貫中 · 一百二十回",
+    "metaEnglish": "Luo Guanzhong · 120 chapters",
+    "coverColor": "#8f1d18",
+    "script": "traditional",
+    "sourceFormat": "EPUB",
+    "description": "羅貫中的章回體歷史演義，述東漢末年群雄並起、至三國歸晉的百年興亡。The classic Ming-era historical novel of the fall of the Han and the age of the Three Kingdoms.",
+    "fileSizeLabel": "EPUB3 · 1.2 MB",
+    "metadataFields": [
+      {
+        "label": "作者 Author",
+        "value": "羅貫中 Luo Guanzhong, c. 1330–1400"
+      },
+      {
+        "label": "書名 Title",
+        "value": "三國演義"
+      },
+      {
+        "label": "別名 Alt title",
+        "value": "Romance of the Three Kingdoms"
+      },
+      {
+        "label": "語言 Language",
+        "value": "中文 Chinese (Traditional)"
+      },
+      {
+        "label": "主題 Subjects",
+        "value": "歷史演義 · 章回小說"
+      },
+      {
+        "label": "版權 Copyright",
+        "value": "Public domain"
+      },
+      {
+        "label": "檔案 File",
+        "value": "EPUB3 · 1.2 MB"
+      }
+    ]
+  },
+  {
+    "id": "dream",
+    "title": "紅樓夢",
+    "titleEnglish": "Dream of the Red Chamber",
+    "author": "曹雪芹",
+    "meta": "曹雪芹 · 一百二十回",
+    "metaEnglish": "Cao Xueqin · 120 chapters",
+    "coverColor": "#2f7a62",
+    "script": "traditional",
+    "sourceFormat": "Kindle",
+    "description": "曹雪芹的清代章回小說，以賈府興衰為經、寶黛愛情為緯，寫盡世家的繁華與幻滅。Cao Xueqin's Qing masterpiece of the rise and fall of the Jia household.",
+    "fileSizeLabel": "AZW3 · 1.4 MB",
+    "metadataFields": [
+      {
+        "label": "作者 Author",
+        "value": "曹雪芹 Cao Xueqin, 1715–1763"
+      },
+      {
+        "label": "書名 Title",
+        "value": "紅樓夢"
+      },
+      {
+        "label": "別名 Alt title",
+        "value": "Hong Lou Meng / The Story of the Stone"
+      },
+      {
+        "label": "語言 Language",
+        "value": "中文 Chinese (Traditional)"
+      },
+      {
+        "label": "主題 Subjects",
+        "value": "清代小說 · 世情小說"
+      },
+      {
+        "label": "版權 Copyright",
+        "value": "Public domain"
+      },
+      {
+        "label": "檔案 File",
+        "value": "AZW3 · 1.4 MB"
+      }
+    ]
+  },
+  {
+    "id": "subs",
+    "title": "桃花源記",
+    "titleEnglish": "The Peach Blossom Spring — subtitles",
+    "author": "陶淵明",
+    "meta": "陶淵明 · 字幕示例",
+    "metaEnglish": "Tao Yuanming · subtitle sample",
+    "coverColor": "#b87333",
+    "script": "traditional",
+    "sourceFormat": "SRT",
+    "description": "以公版古文製作的字幕格式示例。A subtitle-format example based on a public-domain classical text.",
+    "fileSizeLabel": "SRT · 2 kB",
+    "metadataFields": [
+      {
+        "label": "作者 Author",
+        "value": "陶淵明 Tao Yuanming, 365–427"
+      },
+      {
+        "label": "格式 Format",
+        "value": "SRT 字幕示例"
+      },
+      {
+        "label": "語言 Language",
+        "value": "中文 Chinese (Traditional)"
+      },
+      {
+        "label": "版權 Copyright",
+        "value": "Public domain"
+      }
+    ]
+  },
+  {
+    "id": "journey",
+    "title": "西游记",
+    "titleEnglish": "Journey to the West",
+    "author": "吴承恩",
+    "meta": "吴承恩 · 一百回",
+    "metaEnglish": "Wu Cheng'en · 100 chapters",
+    "coverColor": "#5a4630",
+    "script": "simplified",
+    "sourceFormat": "EPUB",
+    "description": "明代章回小說的简体公版示例，待轉換為繁體。A Simplified public-domain sample of the Ming dynasty novel, ready for conversion.",
+    "fileSizeLabel": "EPUB3 · 1.1 MB",
+    "metadataFields": [
+      {
+        "label": "作者 Author",
+        "value": "吴承恩 Wu Cheng'en, c. 1500–1582"
+      },
+      {
+        "label": "書名 Title",
+        "value": "西游记"
+      },
+      {
+        "label": "語言 Language",
+        "value": "中文 Chinese (Simplified)"
+      },
+      {
+        "label": "主題 Subjects",
+        "value": "明代小說 · 神魔小說"
+      },
+      {
+        "label": "版權 Copyright",
+        "value": "Public domain"
+      },
+      {
+        "label": "檔案 File",
+        "value": "EPUB3 · 1.1 MB"
+      }
+    ]
+  },
+  {
+    "id": "rulin",
+    "title": "儒林外史",
+    "titleEnglish": "The Scholars",
+    "author": "吳敬梓",
+    "meta": "吳敬梓 · 五十六回",
+    "metaEnglish": "Wu Jingzi · 56 chapters",
+    "coverColor": "#cf9f37",
+    "script": "traditional",
+    "sourceFormat": "EPUB",
+    "description": "吳敬梓的清代諷刺小說（約 1750）。以明代為背景，串連數十位讀書人的故事，譏刺科舉制度下沽名釣譽的士林百態，亦寫出拒絕同流的君子典型。A Qing-dynasty satire (c. 1750) of scholars chasing fame through the imperial examination system, told in loosely connected episodes.",
+    "fileSizeLabel": "EPUB3 · 397 kB",
+    "metadataFields": [
+      {
+        "label": "作者 Author",
+        "value": "吳敬梓 Wu Jingzi, 1701–1754"
+      },
+      {
+        "label": "書名 Title",
+        "value": "儒林外史"
+      },
+      {
+        "label": "別名 Alt title",
+        "value": "Ru Lin Wai Shi / The Scholars"
+      },
+      {
+        "label": "語言 Language",
+        "value": "中文 Chinese"
+      },
+      {
+        "label": "主題 Subjects",
+        "value": "清代小說 · 科舉 · 社會風俗"
+      },
+      {
+        "label": "發布 Release",
+        "value": "25 Dec 2007 · Project Gutenberg #24032"
+      },
+      {
+        "label": "下載 Downloads",
+        "value": "2,564 / 30 天 days"
+      },
+      {
+        "label": "版權 Copyright",
+        "value": "Public domain (USA)"
+      },
+      {
+        "label": "檔案 File",
+        "value": "EPUB3 · 397 kB"
+      }
+    ]
+  }
+]

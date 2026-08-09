@@ -1,0 +1,1022 @@
+{
+  "loanwordsFromEnglish": [
+    {
+      "trad": "派對",
+      "simp": "派对",
+      "py": "pàiduì",
+      "en": "party",
+      "note": {
+        "en": "Sounds just like it — 派對 is a straight sound-loan.",
+        "tc": "音譯自英文 party — 聽一次就記住。",
+        "sc": "音译自英文 party — 听一次就记住。"
+      }
+    },
+    {
+      "trad": "咖啡",
+      "simp": "咖啡",
+      "py": "kāfēi",
+      "en": "coffee",
+      "note": {
+        "en": "ka-fei ≈ coffee. Order one on day one.",
+        "tc": "音近 coffee — 落地第一天就能點。",
+        "sc": "音近 coffee — 落地第一天就能点。"
+      }
+    },
+    {
+      "trad": "巴士",
+      "simp": "巴士",
+      "py": "bāshì",
+      "en": "bus",
+      "note": {
+        "en": "ba-shi ≈ bus — common in HK/TW usage.",
+        "tc": "音譯 bus — 港台常用。",
+        "sc": "音译 bus — 港台常用。"
+      }
+    },
+    {
+      "trad": "沙發",
+      "simp": "沙发",
+      "py": "shāfā",
+      "en": "sofa",
+      "note": {
+        "en": "sha-fa ≈ sofa.",
+        "tc": "音近 sofa。",
+        "sc": "音近 sofa。"
+      }
+    },
+    {
+      "trad": "巧克力",
+      "simp": "巧克力",
+      "py": "qiǎokèlì",
+      "en": "chocolate",
+      "note": {
+        "en": "qiao-ke-li ≈ chocolate.",
+        "tc": "音譯 chocolate。",
+        "sc": "音译 chocolate。"
+      }
+    },
+    {
+      "trad": "卡拉OK",
+      "simp": "卡拉OK",
+      "py": "kǎlā-OK",
+      "en": "karaoke",
+      "note": {
+        "en": "Borrowed via Japanese — the OK is literal.",
+        "tc": "經日文借入 — OK 原樣保留。",
+        "sc": "经日文借入 — OK 原样保留。"
+      }
+    }
+  ],
+  "loanwordsToEnglish": [
+    {
+      "trad": "好久不見",
+      "simp": "好久不见",
+      "py": "hǎo jiǔ bú jiàn",
+      "en": "long time no see",
+      "note": {
+        "en": "The English phrase is a word-for-word calque of this greeting.",
+        "tc": "英文 long time no see 正是逐字翻譯自這句。",
+        "sc": "英文 long time no see 正是逐字翻译自这句。"
+      }
+    },
+    {
+      "trad": "颱風",
+      "simp": "台风",
+      "py": "táifēng",
+      "en": "typhoon",
+      "note": {
+        "en": "English 'typhoon' echoes 颱風.",
+        "tc": "英文 typhoon 源自 颱風。",
+        "sc": "英文 typhoon 源自 台风。"
+      }
+    },
+    {
+      "trad": "豆腐",
+      "simp": "豆腐",
+      "py": "dòufu",
+      "en": "tofu",
+      "note": {
+        "en": "Tofu came from 豆腐 via Japanese.",
+        "tc": "tofu 經日文借自 豆腐。",
+        "sc": "tofu 经日文借自 豆腐。"
+      }
+    },
+    {
+      "trad": "功夫",
+      "simp": "功夫",
+      "py": "gōngfu",
+      "en": "kung fu",
+      "note": {
+        "en": "Kung fu is 功夫 — literally 'skill earned through effort'.",
+        "tc": "kung fu 即 功夫 — 下工夫練出的本事。",
+        "sc": "kung fu 即 功夫 — 下工夫练出的本事。"
+      }
+    },
+    {
+      "trad": "丟臉",
+      "simp": "丢脸",
+      "py": "diū liǎn",
+      "en": "lose face",
+      "note": {
+        "en": "'Lose face' is a calque of 丟臉.",
+        "tc": "英文 lose face 逐字譯自 丟臉。",
+        "sc": "英文 lose face 逐字译自 丢脸。"
+      }
+    }
+  ],
+  "regionalLabels": {
+    "cn": {
+      "en": "China",
+      "tc": "中國",
+      "sc": "中国"
+    },
+    "tw": {
+      "en": "Taiwan",
+      "tc": "台灣",
+      "sc": "台湾"
+    },
+    "hk": {
+      "en": "Hong Kong",
+      "tc": "香港",
+      "sc": "香港"
+    },
+    "sg": {
+      "en": "Singapore",
+      "tc": "新加坡",
+      "sc": "新加坡"
+    }
+  },
+  "regional": [
+    {
+      "en": "metro / subway",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "地铁",
+          "pinyin": "dìtiě"
+        },
+        {
+          "region": "tw",
+          "word": "捷運",
+          "pinyin": "jiéyùn"
+        },
+        {
+          "region": "hk",
+          "word": "地鐵",
+          "pinyin": "dìtiě"
+        },
+        {
+          "region": "sg",
+          "word": "地鐵 MRT",
+          "pinyin": "dìtiě"
+        }
+      ],
+      "note": {
+        "en": "Like tube vs subway in English.",
+        "tc": "如同英式 tube 對美式 subway。",
+        "sc": "如同英式 tube 对美式 subway。"
+      }
+    },
+    {
+      "en": "hotel",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "酒店",
+          "pinyin": "jiǔdiàn"
+        },
+        {
+          "region": "tw",
+          "word": "飯店",
+          "pinyin": "fàndiàn"
+        },
+        {
+          "region": "hk",
+          "word": "酒店",
+          "pinyin": "jiǔdiàn"
+        }
+      ],
+      "note": {
+        "en": "Careful: in Taiwan 酒店 can mean a hostess bar.",
+        "tc": "注意：在台灣「酒店」另有聲色場所之意。",
+        "sc": "注意：在台湾「酒店」另有声色场所之意。"
+      }
+    },
+    {
+      "en": "taxi",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "出租车",
+          "pinyin": "chūzūchē"
+        },
+        {
+          "region": "tw",
+          "word": "計程車",
+          "pinyin": "jìchéngchē"
+        },
+        {
+          "region": "hk",
+          "word": "的士",
+          "pinyin": "dīshì"
+        },
+        {
+          "region": "sg",
+          "word": "德士",
+          "pinyin": "déshì"
+        }
+      ],
+      "note": {
+        "en": "的士 and 德士 are sound-loans of 'taxi'.",
+        "tc": "的士、德士皆音譯自 taxi。",
+        "sc": "的士、德士皆音译自 taxi。"
+      }
+    },
+    {
+      "en": "software",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "软件",
+          "pinyin": "ruǎnjiàn"
+        },
+        {
+          "region": "tw",
+          "word": "軟體",
+          "pinyin": "ruǎntǐ"
+        }
+      ],
+      "note": {
+        "en": "The converter's vocabulary localization handles exactly this pair.",
+        "tc": "轉換器的「詞彙在地化」正是處理這組。",
+        "sc": "转换器的「词汇本地化」正是处理这组。"
+      }
+    },
+    {
+      "en": "bicycle",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "自行车",
+          "pinyin": "zìxíngchē"
+        },
+        {
+          "region": "tw",
+          "word": "腳踏車",
+          "pinyin": "jiǎotàchē"
+        },
+        {
+          "region": "hk",
+          "word": "單車",
+          "pinyin": "dānchē"
+        },
+        {
+          "region": "sg",
+          "word": "腳車",
+          "pinyin": "jiǎochē"
+        }
+      ],
+      "note": {
+        "en": "Four regions, four everyday words.",
+        "tc": "四地四種日常說法。",
+        "sc": "四地四种日常说法。"
+      }
+    },
+    {
+      "en": "potato",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "土豆",
+          "pinyin": "tǔdòu"
+        },
+        {
+          "region": "tw",
+          "word": "馬鈴薯",
+          "pinyin": "mǎlíngshǔ"
+        }
+      ],
+      "note": {
+        "en": "In Taiwan 土豆 means peanut — a classic trap.",
+        "tc": "在台灣「土豆」是花生 — 經典陷阱。",
+        "sc": "在台湾「土豆」是花生 — 经典陷阱。"
+      }
+    },
+    {
+      "en": "video",
+      "vars": [
+        {
+          "region": "cn",
+          "word": "视频",
+          "pinyin": "shìpín"
+        },
+        {
+          "region": "tw",
+          "word": "影片",
+          "pinyin": "yǐngpiàn"
+        }
+      ],
+      "note": {
+        "en": "Both are understood, each marks where you learned Chinese.",
+        "tc": "兩者都聽得懂，但一開口就知道你在哪學的中文。",
+        "sc": "两者都听得懂，但一开口就知道你在哪学的中文。"
+      }
+    }
+  ],
+  "proverbs": [
+    {
+      "trad": "一舉兩得",
+      "simp": "一举两得",
+      "py": "yī jǔ liǎng dé",
+      "lit": "one move, two gains",
+      "fig": "kill two birds with one stone"
+    },
+    {
+      "trad": "入鄉隨俗",
+      "simp": "入乡随俗",
+      "py": "rù xiāng suí sú",
+      "lit": "enter the village, follow its customs",
+      "fig": "when in Rome, do as the Romans do"
+    },
+    {
+      "trad": "熟能生巧",
+      "simp": "熟能生巧",
+      "py": "shú néng shēng qiǎo",
+      "lit": "familiarity breeds skill",
+      "fig": "practice makes perfect"
+    },
+    {
+      "trad": "馬到成功",
+      "simp": "马到成功",
+      "py": "mǎ dào chéng gōng",
+      "lit": "the horse arrives, success follows",
+      "fig": "swift and immediate success"
+    },
+    {
+      "trad": "對牛彈琴",
+      "simp": "对牛弹琴",
+      "py": "duì niú tán qín",
+      "lit": "playing the zither to a cow",
+      "fig": "wasted words on an unreceptive audience"
+    }
+  ],
+  "strokes8": [
+    {
+      "n": "點 diǎn",
+      "g": "丶",
+      "d": {
+        "en": "Dot — couch the brush, fill top to bottom.",
+        "tc": "頓筆成點，由上而下。",
+        "sc": "顿笔成点，由上而下。"
+      }
+    },
+    {
+      "n": "橫 héng",
+      "g": "一",
+      "d": {
+        "en": "Horizontal — drawn left to right.",
+        "tc": "由左至右平行。",
+        "sc": "由左至右平行。"
+      }
+    },
+    {
+      "n": "豎 shù",
+      "g": "丨",
+      "d": {
+        "en": "Vertical — falls straight down.",
+        "tc": "由上而下直落。",
+        "sc": "由上而下直落。"
+      }
+    },
+    {
+      "n": "鉤 gōu",
+      "g": "亅",
+      "d": {
+        "en": "Hook — a sharp flick ending another stroke.",
+        "tc": "收筆時急轉出鋒。",
+        "sc": "收笔时急转出锋。"
+      }
+    },
+    {
+      "n": "提 tí",
+      "g": "㇀",
+      "d": {
+        "en": "Rise — flick up and to the right.",
+        "tc": "向右上挑出。",
+        "sc": "向右上挑出。"
+      }
+    },
+    {
+      "n": "彎 wān",
+      "g": "乚",
+      "d": {
+        "en": "Bend — a concave curve left or right.",
+        "tc": "弧形彎曲。",
+        "sc": "弧形弯曲。"
+      }
+    },
+    {
+      "n": "撇 piě",
+      "g": "丿",
+      "d": {
+        "en": "Throw — falls leftwards with a slight curve.",
+        "tc": "向左下撇出，略帶弧度。",
+        "sc": "向左下撇出，略带弧度。"
+      }
+    },
+    {
+      "n": "捺 nà",
+      "g": "乀",
+      "d": {
+        "en": "Press — falls rightwards, widening at the end.",
+        "tc": "向右下按出，末端漸寬。",
+        "sc": "向右下按出，末端渐宽。"
+      }
+    }
+  ],
+  "pinyinTones": [
+    {
+      "mark": "ā",
+      "name": {
+        "en": "1st — high & level",
+        "tc": "一聲（陰平）",
+        "sc": "一声（阴平）"
+      },
+      "ch": "媽",
+      "py": "mā",
+      "en": "mother"
+    },
+    {
+      "mark": "á",
+      "name": {
+        "en": "2nd — rising",
+        "tc": "二聲（陽平）",
+        "sc": "二声（阳平）"
+      },
+      "ch": "麻",
+      "py": "má",
+      "en": "hemp"
+    },
+    {
+      "mark": "ǎ",
+      "name": {
+        "en": "3rd — dip & rise",
+        "tc": "三聲（上聲）",
+        "sc": "三声（上声）"
+      },
+      "ch": "馬",
+      "py": "mǎ",
+      "en": "horse"
+    },
+    {
+      "mark": "à",
+      "name": {
+        "en": "4th — sharp fall",
+        "tc": "四聲（去聲）",
+        "sc": "四声（去声）"
+      },
+      "ch": "罵",
+      "py": "mà",
+      "en": "to scold"
+    },
+    {
+      "mark": "a",
+      "name": {
+        "en": "Neutral — short & light",
+        "tc": "輕聲",
+        "sc": "轻声"
+      },
+      "ch": "嗎",
+      "py": "ma",
+      "en": "question particle"
+    }
+  ],
+  "pinyinInitials": [
+    {
+      "g": "b p m f · d t n l · g k h",
+      "n": {
+        "en": "Close to their English sounds.",
+        "tc": "與英文發音相近。",
+        "sc": "与英文发音相近。"
+      }
+    },
+    {
+      "g": "j q x",
+      "n": {
+        "en": "Tongue low, lips spread — roughly jee / chee / shee.",
+        "tc": "舌面音 — 近似 jee／chee／shee。",
+        "sc": "舌面音 — 近似 jee／chee／shee。"
+      }
+    },
+    {
+      "g": "zh ch sh r",
+      "n": {
+        "en": "Retroflex — tongue curled back.",
+        "tc": "翹舌音 — 舌尖後捲。",
+        "sc": "翘舌音 — 舌尖后卷。"
+      }
+    },
+    {
+      "g": "z c s",
+      "n": {
+        "en": "Flat — z = dz, c = ts. The classic trap.",
+        "tc": "平舌音 — c 讀如 ts，最易誤讀。",
+        "sc": "平舌音 — c 读如 ts，最易误读。"
+      }
+    }
+  ],
+  "pinyinFinals": [
+    {
+      "g": "a o e i u ü",
+      "n": {
+        "en": "The six simple vowels.",
+        "tc": "六個單韻母。",
+        "sc": "六个单韵母。"
+      }
+    },
+    {
+      "g": "ai ei ao ou",
+      "n": {
+        "en": "Diphthongs — glide between two vowels.",
+        "tc": "複韻母 — 兩音滑動。",
+        "sc": "复韵母 — 两音滑动。"
+      }
+    },
+    {
+      "g": "an en ang eng ong er",
+      "n": {
+        "en": "Nasal and r-colored endings.",
+        "tc": "鼻音與捲舌韻尾。",
+        "sc": "鼻音与卷舌韵尾。"
+      }
+    }
+  ],
+  "zhuyinMap": [
+    {
+      "zhuyin": "ㄅ",
+      "pinyin": "b"
+    },
+    {
+      "zhuyin": "ㄆ",
+      "pinyin": "p"
+    },
+    {
+      "zhuyin": "ㄇ",
+      "pinyin": "m"
+    },
+    {
+      "zhuyin": "ㄈ",
+      "pinyin": "f"
+    },
+    {
+      "zhuyin": "ㄉ",
+      "pinyin": "d"
+    },
+    {
+      "zhuyin": "ㄊ",
+      "pinyin": "t"
+    },
+    {
+      "zhuyin": "ㄋ",
+      "pinyin": "n"
+    },
+    {
+      "zhuyin": "ㄌ",
+      "pinyin": "l"
+    },
+    {
+      "zhuyin": "ㄍ",
+      "pinyin": "g"
+    },
+    {
+      "zhuyin": "ㄎ",
+      "pinyin": "k"
+    },
+    {
+      "zhuyin": "ㄏ",
+      "pinyin": "h"
+    },
+    {
+      "zhuyin": "ㄐ",
+      "pinyin": "j"
+    },
+    {
+      "zhuyin": "ㄑ",
+      "pinyin": "q"
+    },
+    {
+      "zhuyin": "ㄒ",
+      "pinyin": "x"
+    },
+    {
+      "zhuyin": "ㄓ",
+      "pinyin": "zh"
+    },
+    {
+      "zhuyin": "ㄔ",
+      "pinyin": "ch"
+    },
+    {
+      "zhuyin": "ㄕ",
+      "pinyin": "sh"
+    },
+    {
+      "zhuyin": "ㄖ",
+      "pinyin": "r"
+    },
+    {
+      "zhuyin": "ㄗ",
+      "pinyin": "z"
+    },
+    {
+      "zhuyin": "ㄘ",
+      "pinyin": "c"
+    },
+    {
+      "zhuyin": "ㄙ",
+      "pinyin": "s"
+    },
+    {
+      "zhuyin": "ㄚ",
+      "pinyin": "a"
+    },
+    {
+      "zhuyin": "ㄛ",
+      "pinyin": "o"
+    },
+    {
+      "zhuyin": "ㄜ",
+      "pinyin": "e"
+    },
+    {
+      "zhuyin": "ㄝ",
+      "pinyin": "ê"
+    },
+    {
+      "zhuyin": "ㄞ",
+      "pinyin": "ai"
+    },
+    {
+      "zhuyin": "ㄟ",
+      "pinyin": "ei"
+    },
+    {
+      "zhuyin": "ㄠ",
+      "pinyin": "ao"
+    },
+    {
+      "zhuyin": "ㄡ",
+      "pinyin": "ou"
+    },
+    {
+      "zhuyin": "ㄢ",
+      "pinyin": "an"
+    },
+    {
+      "zhuyin": "ㄣ",
+      "pinyin": "en"
+    },
+    {
+      "zhuyin": "ㄤ",
+      "pinyin": "ang"
+    },
+    {
+      "zhuyin": "ㄥ",
+      "pinyin": "eng"
+    },
+    {
+      "zhuyin": "ㄦ",
+      "pinyin": "er"
+    },
+    {
+      "zhuyin": "ㄧ",
+      "pinyin": "i"
+    },
+    {
+      "zhuyin": "ㄨ",
+      "pinyin": "u"
+    },
+    {
+      "zhuyin": "ㄩ",
+      "pinyin": "ü"
+    }
+  ],
+  "zhuyinTones": [
+    {
+      "m": "—",
+      "n": {
+        "en": "1st tone — unmarked",
+        "tc": "一聲 — 不標調",
+        "sc": "一声 — 不标调"
+      }
+    },
+    {
+      "m": "ˊ",
+      "n": {
+        "en": "2nd tone — rising",
+        "tc": "二聲",
+        "sc": "二声"
+      }
+    },
+    {
+      "m": "ˇ",
+      "n": {
+        "en": "3rd tone — dip & rise",
+        "tc": "三聲",
+        "sc": "三声"
+      }
+    },
+    {
+      "m": "ˋ",
+      "n": {
+        "en": "4th tone — falling",
+        "tc": "四聲",
+        "sc": "四声"
+      }
+    },
+    {
+      "m": "˙",
+      "n": {
+        "en": "Neutral tone — dot above",
+        "tc": "輕聲 — 點於上方",
+        "sc": "轻声 — 点于上方"
+      }
+    }
+  ],
+  "inputMethods": [
+    {
+      "glyph": "拼",
+      "name": {
+        "en": "Pinyin keyboard",
+        "tc": "拼音鍵盤",
+        "sc": "拼音键盘"
+      },
+      "desc": {
+        "en": "Type the romanisation (ma) and pick 馬 from the candidate bar. Default on most phones.",
+        "tc": "輸入羅馬拼音（ma），從候選列選「馬」。大多數手機的預設中文鍵盤。",
+        "sc": "输入罗马拼音（ma），从候选栏选「马」。大多数手机的默认中文键盘。"
+      }
+    },
+    {
+      "glyph": "注",
+      "name": {
+        "en": "Zhuyin keyboard",
+        "tc": "注音鍵盤",
+        "sc": "注音键盘"
+      },
+      "desc": {
+        "en": "Taiwan's ㄅㄆㄇ layout — type ㄇㄚˇ, tone key last.",
+        "tc": "台灣常用的ㄅㄆㄇ排列 — 輸入ㄇㄚˇ，最後按聲調。",
+        "sc": "台湾常用的ㄅㄆㄇ排列 — 输入ㄇㄚˇ，最后按声调。"
+      }
+    },
+    {
+      "glyph": "寫",
+      "name": {
+        "en": "Handwriting input",
+        "tc": "手寫輸入",
+        "sc": "手写输入"
+      },
+      "desc": {
+        "en": "Draw the character on the keyboard panel — rough stroke order helps recognition.",
+        "tc": "在鍵盤面板上手寫 — 大致正確的筆順能提高辨識率。",
+        "sc": "在键盘面板上手写 — 大致正确的笔顺能提高识别率。"
+      }
+    },
+    {
+      "glyph": "聲",
+      "name": {
+        "en": "Voice input",
+        "tc": "語音輸入",
+        "sc": "语音输入"
+      },
+      "desc": {
+        "en": "Speak the sentence — a good way to check your tones.",
+        "tc": "直接口說 — 也是檢查聲調的好方法。",
+        "sc": "直接口说 — 也是检查声调的好方法。"
+      }
+    }
+  ],
+  "resourcesKnowledge": [
+    {
+      "name": "Pleco",
+      "desc": {
+        "en": "Mobile dictionary + stroke animations — reach for it for any unknown character on the go.",
+        "tc": "行動字典＋筆順動畫 — 路上遇到生字就查它。",
+        "sc": "移动字典＋笔顺动画 — 路上遇到生字就查它。"
+      }
+    },
+    {
+      "name": "Hanzi Writer",
+      "desc": {
+        "en": "Open-source stroke-order data — what real stroke checking is built on.",
+        "tc": "開源筆順資料 — 產品版筆順檢查的基礎。",
+        "sc": "开源笔顺数据 — 产品版笔顺检查的基础。"
+      }
+    },
+    {
+      "name": "Project Gutenberg 中文書庫",
+      "desc": {
+        "en": "Free public-domain classics — your next reading material lives here.",
+        "tc": "免費公版中文經典 — 下一本書從這裡找。",
+        "sc": "免费公版中文经典 — 下一本书从这里找。"
+      }
+    },
+    {
+      "name": "CC-CEDICT (MDBG)",
+      "desc": {
+        "en": "Open dictionary data — definitions you can trust and reuse.",
+        "tc": "開放詞典資料 — 可靠、可重用的釋義。",
+        "sc": "开放词典数据 — 可靠、可重用的释义。"
+      }
+    }
+  ],
+  "resourcesWisdom": [
+    {
+      "name": "r/ChineseLanguage",
+      "desc": {
+        "en": "High-signal subreddit — study methods and plateau troubleshooting.",
+        "tc": "高質量社群 — 學習方法與瓶頸求助。",
+        "sc": "高质量社群 — 学习方法与瓶颈求助。"
+      }
+    },
+    {
+      "name": "Chinese-Forums",
+      "desc": {
+        "en": "Veteran learner forum — exam-prep experience reports.",
+        "tc": "老牌學習者論壇 — 考試準備經驗談。",
+        "sc": "老牌学习者论坛 — 考试准备经验谈。"
+      }
+    },
+    {
+      "name": "HelloTalk · Tandem",
+      "desc": {
+        "en": "Language exchange with native speakers — daily conversation reps.",
+        "tc": "與母語者語言交換 — 天天開口說。",
+        "sc": "与母语者语言交换 — 天天开口说。"
+      }
+    },
+    {
+      "name": "語言交換聚會 Local meetups",
+      "desc": {
+        "en": "Real-world speaking — where wisdom is earned.",
+        "tc": "線下練口說 — 智慧來自真實對話。",
+        "sc": "线下练口说 — 智慧来自真实对话。"
+      }
+    }
+  ],
+  "glossary": [
+    {
+      "term": "簡體 · 繁體",
+      "def": {
+        "en": "Two standard character sets; Simplified→Traditional is one-to-many (发→髮/發).",
+        "tc": "兩套標準字形；简→繁為一對多（发→髮/發）。",
+        "sc": "两套标准字形；简→繁为一对多（发→髮/發）。"
+      }
+    },
+    {
+      "term": "部首 Radical",
+      "def": {
+        "en": "The indexing component of a character — how dictionaries file it.",
+        "tc": "字的檢索部件 — 字典據此歸類。",
+        "sc": "字的检索部件 — 字典据此归类。"
+      }
+    },
+    {
+      "term": "聲調 Tone",
+      "def": {
+        "en": "Pitch contour that changes meaning; Mandarin has four plus neutral.",
+        "tc": "改變字義的音高曲線；普通話有四聲加輕聲。",
+        "sc": "改变字义的音高曲线；普通话有四声加轻声。"
+      }
+    },
+    {
+      "term": "拼音 · 注音",
+      "def": {
+        "en": "Two phonetic systems: Latin pinyin (mainland) and ㄅㄆㄇ zhuyin (Taiwan).",
+        "tc": "兩套注音系統：拉丁拼音（大陸）與ㄅㄆㄇ注音（台灣）。",
+        "sc": "两套注音系统：拉丁拼音（大陆）与ㄅㄆㄇ注音（台湾）。"
+      }
+    },
+    {
+      "term": "一字多繁",
+      "def": {
+        "en": "One Simplified character mapping to several Traditional ones — the hard part of conversion.",
+        "tc": "一個简体字對應多個繁體字 — 轉換最難之處。",
+        "sc": "一个简体字对应多个繁体字 — 转换最难之处。"
+      }
+    },
+    {
+      "term": "HSK · TOCFL",
+      "def": {
+        "en": "The mainland and Taiwan proficiency exams; Fanti maps both to CEFR.",
+        "tc": "大陸與台灣的中文檢定；Fanti 對應至 CEFR。",
+        "sc": "大陆与台湾的中文检定；Fanti 对应至 CEFR。"
+      }
+    },
+    {
+      "term": "間隔複習 Spaced repetition",
+      "def": {
+        "en": "Reviewing at growing intervals — builds storage strength, not just momentary fluency.",
+        "tc": "以漸增間隔複習 — 練的是長期記憶，不只是當下流暢。",
+        "sc": "以渐增间隔复习 — 练的是长期记忆，不只是当下流畅。"
+      }
+    }
+  ],
+  "successCriteria": {
+    "practical": {
+      "en": [
+        "Order food without pointing",
+        "Read station and street signs",
+        "Small talk about your day"
+      ],
+      "tc": [
+        "點菜不用比手畫腳",
+        "看懂車站與路標",
+        "用中文聊今天過得如何"
+      ],
+      "sc": [
+        "点菜不用比手画脚",
+        "看懂车站与路标",
+        "用中文聊今天过得如何"
+      ]
+    },
+    "exam": {
+      "en": [
+        "Pass HSK 2 (300 words)",
+        "Read exam instructions calmly",
+        "Type 150 characters from memory"
+      ],
+      "tc": [
+        "通過 HSK 2（300 詞）",
+        "從容讀懂考題說明",
+        "憑記憶打出 150 個字"
+      ],
+      "sc": [
+        "通过 HSK 2（300 词）",
+        "从容读懂考题说明",
+        "凭记忆打出 150 个字"
+      ]
+    },
+    "reading": {
+      "en": [
+        "Finish a children's picture book",
+        "Read a chapter of 三國演義 with hints",
+        "Order from a menu without lookups"
+      ],
+      "tc": [
+        "讀完一本兒童繪本",
+        "靠提示讀完《三國演義》一回",
+        "讀菜單不用查字典"
+      ],
+      "sc": [
+        "读完一本儿童绘本",
+        "靠提示读完《三国演义》一回",
+        "读菜单不用查字典"
+      ]
+    }
+  },
+  "topics": [
+    {
+      "id": "street",
+      "en": "Street survival",
+      "tc": "街頭生存",
+      "sc": "街头生存"
+    },
+    {
+      "id": "food",
+      "en": "Food & ordering",
+      "tc": "點餐吃飯",
+      "sc": "点餐吃饭"
+    },
+    {
+      "id": "travel",
+      "en": "Transit & travel",
+      "tc": "交通旅行",
+      "sc": "交通旅行"
+    },
+    {
+      "id": "daily",
+      "en": "Daily life",
+      "tc": "日常生活",
+      "sc": "日常生活"
+    },
+    {
+      "id": "work",
+      "en": "Office & work",
+      "tc": "職場辦公",
+      "sc": "职场办公"
+    },
+    {
+      "id": "culture",
+      "en": "Culture & reading",
+      "tc": "文化閱讀",
+      "sc": "文化阅读"
+    }
+  ],
+  "survivalTopics": [
+    "street",
+    "food",
+    "travel"
+  ]
+}

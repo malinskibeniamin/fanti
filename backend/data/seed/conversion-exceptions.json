@@ -1,0 +1,119 @@
+{
+  "s2t": [
+    {
+      "sourceChar": "发",
+      "options": [
+        "髮",
+        "發"
+      ],
+      "note": {
+        "en": "hair vs. to issue — 1,204 resolved by context, 12 low-confidence",
+        "tc": "hair vs. to issue — 1,204 處由語境判定，12 處信心不足",
+        "sc": "hair vs. to issue — 1,204 处由语境判定，12 处信心不足"
+      },
+      "context": "「一根白发」 → 一根白髮",
+      "status": "ambiguous"
+    },
+    {
+      "sourceChar": "里",
+      "options": [
+        "裡",
+        "里"
+      ],
+      "note": {
+        "en": "inside vs. li (distance unit) — 318 occurrences",
+        "tc": "inside vs. li（里程單位）— 318 處",
+        "sc": "inside vs. li（里程单位）— 318 处"
+      },
+      "context": "「心里」 → 心裡 ・ 「三里路」 → 三里路",
+      "status": "ambiguous"
+    },
+    {
+      "sourceChar": "面",
+      "options": [
+        "麵",
+        "面"
+      ],
+      "note": {
+        "en": "noodles vs. face — 47 occurrences",
+        "tc": "noodles vs. face — 47 處",
+        "sc": "noodles vs. face — 47 处"
+      },
+      "context": "「一碗面」 → 一碗麵",
+      "status": "ambiguous"
+    },
+    {
+      "sourceChar": "章",
+      "options": [
+        "章",
+        "節",
+        "回"
+      ],
+      "note": {
+        "en": "chapter markers kept as 章 — 12 markers in total",
+        "tc": "章節標記保留為「章」— 共 12 個標記",
+        "sc": "章节标记保留为「章」— 共 12 个标记"
+      },
+      "context": "「第十二章」 → 第十二章",
+      "status": "manual"
+    }
+  ],
+  "t2s": [
+    {
+      "sourceChar": "乾",
+      "options": [
+        "干",
+        "乾"
+      ],
+      "note": {
+        "en": "乾燥→干燥, but the era name 乾隆 keeps its form — 12 occurrences",
+        "tc": "乾燥→干燥，但年號「乾隆」保留原字 — 12 處",
+        "sc": "乾燥→干燥，但年号「乾隆」保留原字 — 12 处"
+      },
+      "context": "「乾淨」 → 干净 ・ 「乾隆」 → 乾隆",
+      "status": "ambiguous"
+    },
+    {
+      "sourceChar": "著",
+      "options": [
+        "着",
+        "著"
+      ],
+      "note": {
+        "en": "aspect particle → 着; 著作 keeps 著 — 1,890 resolved by context",
+        "tc": "動態助詞→着；「著作」保留 — 1,890 處由語境判定",
+        "sc": "动态助词→着；「著作」保留 — 1,890 处由语境判定"
+      },
+      "context": "「看著」 → 看着 ・ 「著作」 → 著作",
+      "status": "ambiguous"
+    },
+    {
+      "sourceChar": "瞭",
+      "options": [
+        "了",
+        "瞭"
+      ],
+      "note": {
+        "en": "瞭解→了解; 瞭望 keeps 瞭 — 44 occurrences",
+        "tc": "瞭解→了解；「瞭望」保留 — 44 處",
+        "sc": "瞭解→了解；「瞭望」保留 — 44 处"
+      },
+      "context": "「瞭解」 → 了解 ・ 「瞭望」 → 瞭望",
+      "status": "ambiguous"
+    },
+    {
+      "sourceChar": "回",
+      "options": [
+        "回",
+        "章"
+      ],
+      "note": {
+        "en": "chapter marker 回 kept — 120 markers in total",
+        "tc": "章節標記「回」保留 — 共 120 個標記",
+        "sc": "章节标记「回」保留 — 共 120 个标记"
+      },
+      "context": "「第一百二十回」 → 第一百二十回",
+      "status": "manual"
+    }
+  ]
+}

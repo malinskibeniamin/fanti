@@ -1,0 +1,61 @@
+version: "2"
+
+linters:
+  default: all
+  disable:
+    - cyclop
+    - funlen
+    - lll
+    - wrapcheck
+    - wsl
+    - wsl_v5
+    - varnamelen
+    - exhaustruct
+    - depguard
+    - godox
+    - nlreturn
+    - mnd
+    - testpackage
+    - paralleltest
+    - nonamedreturns
+    - tagliatelle
+    - noinlineerr # inline `if err :=` is idiomatic
+    - funcorder # helpers stay near their callers
+    - gosmopolitan # the entire product domain is CJK text
+  settings:
+    forbidigo:
+      forbid:
+        - pattern: ^fmt\.Print.*$
+          msg: use slog, not fmt printing
+        - pattern: ^log\.(Print|Fatal|Panic).*$
+          msg: use slog, not the log package
+        - pattern: ^panic$
+          msg: return errors instead of panicking
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - err113
+          - gochecknoglobals
+          - forcetypeassert
+          - gocognit
+          - gocyclo
+          - cyclop
+          - maintidx
+          - dupword
+      - path: internal/testdb/
+        linters:
+          - noctx
+          - forcetypeassert
+          - gosec
+
+formatters:
+  enable:
+    - gofumpt
+    - gci
+  settings:
+    gci:
+      sections:
+        - standard
+        - default
+        - localmodule

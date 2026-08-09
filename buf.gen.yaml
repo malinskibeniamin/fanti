@@ -1,0 +1,28 @@
+version: v2
+managed:
+  enabled: true
+  disable:
+    - module: buf.build/googleapis/googleapis
+  override:
+    - file_option: go_package_prefix
+      value: github.com/malinskibeniamin/fanti/backend/gen
+inputs:
+  - directory: proto
+plugins:
+  # Go messages + Connect handlers/clients.
+  - remote: buf.build/protocolbuffers/go:v1.36.11
+    revision: 1
+    out: backend/gen
+    opt: paths=source_relative
+  - remote: buf.build/connectrpc/go:v1.20.0
+    revision: 1
+    out: backend/gen
+    opt: paths=source_relative
+  # TS messages + service descriptors (consumed directly by connect-query v2).
+  # include_imports emits the google/api annotation types the contracts use.
+  - remote: buf.build/bufbuild/es:v2.13.0
+    revision: 1
+    out: web/src/gen
+    include_imports: true
+    opt:
+      - target=ts

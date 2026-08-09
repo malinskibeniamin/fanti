@@ -1,0 +1,130 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+      - name: Lint
+        uses: golangci/golangci-lint-action@4afd733a84b1f43292c63897423277bb7f4313a9 # v8
+        with:
+          version: v2.12.2
+          working-directory: backend
+      - name: Unit tests
+        working-directory: backend
+        run: |
+          go install github.com/mfridman/tparse@v0.18.0
+          go test -short -json ./... | tparse -all -format markdown >> "$GITHUB_STEP_SUMMARY"
+      - name: Integration tests
+        working-directory: backend
+        run: |
+          go test -json -run Integration ./... | tparse -all -format markdown >> "$GITHUB_STEP_SUMMARY"
+
+  web:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.14
+      - name: Install
+        run: bun install --frozen-lockfile
+      - name: Lint
+        run: bun run lint
+      - name: Typecheck
+        run: bun run type:check
+      - name: Unit tests
+        run: bun run test
+      - name: Build
+        run: bun run build
+
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@924ae3a1cded613372ab5595356fb5720e22ba16 # v6
+        with:
+          go-version-file: backend/go.mod
+          cache-dependency-path: backend/go.sum
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.3.14
+      - name: Start database
+        run: docker compose up -d db --wait
+      - name: Seed fixture data
+        working-directory: backend
+        # CEDICT and stroke data are large downloads the specs tolerate
+        # missing (E2E_LEAN_SEED). The vendored Tatoeba derivative powers
+        # frequency ranks and examples, so it stays in.
+        run: go run ./cmd/fanti seed --skip-cedict --skip-strokes --skip-history
+      - name: Build API
+        working-directory: backend
+        run: go build -o /tmp/fanti-e2e-bin ./cmd/fanti
+      - name: Install web dependencies
+        working-directory: web
+        run: bun install --frozen-lockfile
+      - name: Cache Playwright browsers
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('web/bun.lock') }}
+      - name: Install Playwright browsers
+        working-directory: web
+        run: bunx playwright install --with-deps chromium webkit
+      - name: Run e2e tests
+        working-directory: web
+        env:
+          E2E_LEAN_SEED: "1"
+        run: bunx playwright test
+      - name: Upload traces on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: playwright-traces
+          path: web/e2e/test-results/
+          retention-days: 7
+
+  proto:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: bufbuild/buf-action@8c6a16e16f12ba20b6470afa9c2ba9b5ba8c97c3 # v1
+        with:
+          setup_only: true
+      - name: Lint protos
+        run: buf lint proto
+      - name: Check generated code is current
+        run: |
+          buf generate
+          git diff --exit-code backend/gen web/src/gen

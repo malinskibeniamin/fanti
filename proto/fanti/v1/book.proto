@@ -1,0 +1,191 @@
+syntax = "proto3";
+
+package fanti.v1;
+
+import "fanti/v1/common.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// A book in the library: a converted upload or a seeded classic / graded story.
+message Book {
+  option (google.api.resource) = {
+    type: "fanti.app/Book"
+    pattern: "books/{book}"
+    singular: "book"
+    plural: "books"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  // Title in the book's own script, e.g. 三國演義.
+  string title = 2 [(google.api.field_behavior) = REQUIRED];
+  string title_english = 3;
+  string author = 4;
+
+  Script script = 5;
+  FileFormat source_format = 6;
+
+  // Cover background color, hex (e.g. "#8f1d18").
+  string cover_color = 7;
+
+  int32 chapter_count = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int64 char_count = 9 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  // Reading progress 0..1.
+  double reading_progress = 10;
+  // Chapter currently being read: books/{book}/chapters/{chapter}.
+  string current_chapter = 11 [(google.api.resource_reference) = {type: "fanti.app/Chapter"}];
+
+  // Long description shown on the detail page.
+  string description = 12;
+  // Human-readable file size, e.g. "EPUB3 · 1.2 MB".
+  string file_size_label = 13 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Label/value metadata rows for the "About this eBook" card.
+  repeated MetadataField metadata_fields = 14;
+
+  // Set for seeded graded stories (HSK-levelled original texts).
+  bool graded_story = 15;
+  // Level label for graded stories, e.g. "HSK 1".
+  string level_label = 16;
+
+  google.protobuf.Timestamp create_time = 17 [(google.api.field_behavior) = OUTPUT_ONLY];
+  google.protobuf.Timestamp update_time = 18 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// A label/value row on the book detail page (作者 Author / 版權 Copyright / …).
+message MetadataField {
+  string label = 1;
+  string value = 2;
+}
+
+// A chapter of a book. Paragraph tokens are only populated in CHAPTER_VIEW_FULL.
+message Chapter {
+  option (google.api.resource) = {
+    type: "fanti.app/Chapter"
+    pattern: "books/{book}/chapters/{chapter}"
+    singular: "chapter"
+    plural: "chapters"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  string title = 2;
+  int32 index = 3;
+
+  // Tokenized content in Traditional script.
+  repeated Paragraph traditional_paragraphs = 4;
+  // Tokenized content in Simplified script.
+  repeated Paragraph simplified_paragraphs = 5;
+}
+
+// One paragraph of reader text.
+message Paragraph {
+  repeated Token tokens = 1;
+  // Sentence boundaries as [start, end) token index ranges, for cloze mining.
+  repeated SentenceSpan sentences = 2;
+}
+
+// One tappable unit of reader text (a single character or punctuation mark).
+message Token {
+  string text = 1;
+  // Pinyin reading for ruby annotation; empty for punctuation.
+  string pinyin = 2;
+  // Character page to open on tap: characters/{character}. Empty when not tappable.
+  string character = 3 [(google.api.resource_reference) = {type: "fanti.app/Character"}];
+}
+
+// Half-open token range [start, end) marking one sentence.
+message SentenceSpan {
+  int32 start = 1;
+  int32 end = 2;
+}
+
+// View of Chapter to return.
+enum ChapterView {
+  CHAPTER_VIEW_UNSPECIFIED = 0;
+  // Title and index only.
+  CHAPTER_VIEW_BASIC = 1;
+  // Includes tokenized paragraphs.
+  CHAPTER_VIEW_FULL = 2;
+}
+
+message ListBooksRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListBooksResponse {
+  repeated Book books = 1;
+  string next_page_token = 2;
+}
+
+message GetBookRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Book"}
+  ];
+}
+
+message UpdateBookRequest {
+  Book book = 1 [(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+message DeleteBookRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Book"}
+  ];
+}
+
+message ListChaptersRequest {
+  string parent = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {child_type: "fanti.app/Chapter"}
+  ];
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListChaptersResponse {
+  repeated Chapter chapters = 1;
+  string next_page_token = 2;
+}
+
+message GetChapterRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Chapter"}
+  ];
+  ChapterView view = 2;
+}
+
+// Download the book's EPUB3 file.
+message DownloadBookRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Book"}
+  ];
+}
+
+message DownloadBookResponse {
+  string filename = 1;
+  bytes data = 2;
+}
+
+// The library of books and their reader content.
+service LibraryService {
+  rpc ListBooks(ListBooksRequest) returns (ListBooksResponse);
+  rpc GetBook(GetBookRequest) returns (Book);
+  // Updates mutable book fields (reading_progress, current_chapter, description).
+  rpc UpdateBook(UpdateBookRequest) returns (Book);
+  rpc DeleteBook(DeleteBookRequest) returns (google.protobuf.Empty);
+
+  rpc ListChapters(ListChaptersRequest) returns (ListChaptersResponse);
+  rpc GetChapter(GetChapterRequest) returns (Chapter);
+
+  rpc DownloadBook(DownloadBookRequest) returns (DownloadBookResponse);
+}

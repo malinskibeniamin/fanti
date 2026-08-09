@@ -1,0 +1,50 @@
+[
+  {
+    "threshold": 5,
+    "en": "Read exit & entrance signs",
+    "tc": "看懂出口、入口等路標",
+    "sc": "看懂出口、入口等路标"
+  },
+  {
+    "threshold": 10,
+    "en": "Order tea and a meal",
+    "tc": "點一壺茶、一份飯",
+    "sc": "点一壶茶、一份饭"
+  },
+  {
+    "threshold": 25,
+    "en": "Follow a children's picture book",
+    "tc": "讀懂一本兒童繪本",
+    "sc": "读懂一本儿童绘本"
+  },
+  {
+    "threshold": 50,
+    "en": "Watch a vlog with Chinese subtitles",
+    "tc": "看懂配中文字幕的影片",
+    "sc": "看懂配中文字幕的视频"
+  },
+  {
+    "threshold": 140,
+    "en": "≈50% of everyday speech — talk about your day",
+    "tc": "覆蓋約五成日常口語 — 聊聊你的一天",
+    "sc": "覆盖约五成日常口语 — 聊聊你的一天"
+  },
+  {
+    "threshold": 300,
+    "en": "Sit HSK 2 with confidence",
+    "tc": "從容應考 HSK 2",
+    "sc": "从容应考 HSK 2"
+  },
+  {
+    "threshold": 600,
+    "en": "Read a young-adult novel",
+    "tc": "讀一本青少年小說",
+    "sc": "读一本青少年小说"
+  },
+  {
+    "threshold": 1000,
+    "en": "≈90% of everyday speech — conversational reading",
+    "tc": "覆蓋約九成日常口語 — 對話自如",
+    "sc": "覆盖约九成日常口语 — 对话自如"
+  }
+]

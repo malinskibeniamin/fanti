@@ -1,0 +1,46 @@
+[
+  {
+    "id": "wodeyitian",
+    "levelLabel": "HSK 1",
+    "charCount": 78,
+    "title": "我的一天",
+    "titleSimplified": "我的一天",
+    "blurb": {
+      "en": "A very first story — one ordinary day, told in the most common characters.",
+      "tc": "第一篇小故事 — 用最常用的字，說平常的一天。",
+      "sc": "第一篇小故事 — 用最常用的字，说平常的一天。"
+    },
+    "traditionalParagraphs": [
+      "我叫小明，家在台北。每天早上七點起床，喝一杯茶，吃兩個包子。",
+      "我坐捷運去上班。車上人很多，我喜歡看書。",
+      "晚上回家，媽媽做飯。我們一邊吃飯，一邊說今天的事。"
+    ],
+    "simplifiedParagraphs": [
+      "我叫小明，家在台北。每天早上七点起床，喝一杯茶，吃两个包子。",
+      "我坐捷运去上班。车上人很多，我喜欢看书。",
+      "晚上回家，妈妈做饭。我们一边吃饭，一边说今天的事。"
+    ]
+  },
+  {
+    "id": "yeshi",
+    "levelLabel": "HSK 2",
+    "charCount": 112,
+    "title": "夜市",
+    "titleSimplified": "夜市",
+    "blurb": {
+      "en": "Saturday night at the night market — food, friends, and one familiar phrase.",
+      "tc": "星期六的夜市 — 小吃、朋友，還有一句熟悉的話。",
+      "sc": "星期六的夜市 — 小吃、朋友，还有一句熟悉的话。"
+    },
+    "traditionalParagraphs": [
+      "星期六晚上，我和朋友去夜市。夜市裡什麼都有：牛肉麵、臭豆腐，還有芒果冰。",
+      "我們先吃了一碗麵，再喝一杯珍珠奶茶。朋友說：「好久不見，你還是最愛吃！」我們都笑了。",
+      "回家的路上，天上有月亮。我想，下個星期再來。"
+    ],
+    "simplifiedParagraphs": [
+      "星期六晚上，我和朋友去夜市。夜市里什么都有：牛肉面、臭豆腐，还有芒果冰。",
+      "我们先吃了一碗面，再喝一杯珍珠奶茶。朋友说：“好久不见，你还是最爱吃！”我们都笑了。",
+      "回家的路上，天上有月亮。我想，下个星期再来。"
+    ]
+  }
+]

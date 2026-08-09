@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package fanti.v1;
+
+// Chinese script variant.
+enum Script {
+  SCRIPT_UNSPECIFIED = 0;
+  SCRIPT_SIMPLIFIED = 1;
+  SCRIPT_TRADITIONAL = 2;
+}
+
+// Conversion direction between scripts.
+enum ConversionDirection {
+  CONVERSION_DIRECTION_UNSPECIFIED = 0;
+  // Simplified → Traditional (简 → 繁).
+  CONVERSION_DIRECTION_S2T = 1;
+  // Traditional → Simplified (繁 → 简).
+  CONVERSION_DIRECTION_T2S = 2;
+}
+
+// Supported upload formats.
+enum FileFormat {
+  FILE_FORMAT_UNSPECIFIED = 0;
+  FILE_FORMAT_EPUB = 1;
+  FILE_FORMAT_TXT = 2;
+  FILE_FORMAT_SRT = 3;
+  FILE_FORMAT_MOBI = 4;
+}
+
+// Character-mapping confidence between scripts.
+enum MappingStatus {
+  MAPPING_STATUS_UNSPECIFIED = 0;
+  // One-to-one safe mapping.
+  MAPPING_STATUS_EXACT = 1;
+  // One-to-many, resolved by context.
+  MAPPING_STATUS_AMBIGUOUS = 2;
+  // Needs human review.
+  MAPPING_STATUS_MANUAL = 3;
+}
+
+// Learner-selected assistance for handwriting practice.
+enum PracticeDifficulty {
+  PRACTICE_DIFFICULTY_UNSPECIFIED = 0;
+  // Preview, outline, and visual mnemonic.
+  PRACTICE_DIFFICULTY_GUIDED = 1;
+  // Outline and optional visual mnemonic.
+  PRACTICE_DIFFICULTY_RECALL = 2;
+  // Blank writing surface until the learner requests help.
+  PRACTICE_DIFFICULTY_MASTERY = 3;
+}
+
+// Copy authored in the three UI languages.
+message LocalizedText {
+  string en = 1;
+  // Traditional Chinese (繁體).
+  string tc = 2;
+  // Simplified Chinese (简体).
+  string sc = 3;
+}
+
+// A bilingual example sentence with difficulty level.
+message ExampleSentence {
+  // HSK level 1-6; 0 when unlevelled (proper names).
+  int32 hsk_level = 1;
+  string chinese = 2;
+  string english = 3;
+}

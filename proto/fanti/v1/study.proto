@@ -1,0 +1,401 @@
+syntax = "proto3";
+
+package fanti.v1;
+
+import "fanti/v1/common.proto";
+import "fanti/v1/dictionary.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+
+// SRS state for one studied character. The resource id is the traditional
+// character itself: reviews/馬.
+message Review {
+  option (google.api.resource) = {
+    type: "fanti.app/Review"
+    pattern: "reviews/{review}"
+    singular: "review"
+    plural: "reviews"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  // Position in the interval ladder (1/3/7/14/30/60 days).
+  int32 srs_level = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+  google.protobuf.Timestamp due_time = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 mistake_count = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  bool learned = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  PracticeDifficulty practice_difficulty = 6;
+}
+
+// Recall grade for an SRS answer.
+enum Grade {
+  GRADE_UNSPECIFIED = 0;
+  // Failed — retry in 10 minutes.
+  GRADE_AGAIN = 1;
+  // Recalled — advance one level.
+  GRADE_GOOD = 2;
+  // Trivial — advance two levels.
+  GRADE_EASY = 3;
+}
+
+// Learning goal driving ordering and readiness display.
+enum Goal {
+  GOAL_UNSPECIFIED = 0;
+  // Street & travel — frequency-ordered.
+  GOAL_PRACTICAL = 1;
+  // Exam prep — HSK-ordered.
+  GOAL_EXAM = 2;
+  // Reading books.
+  GOAL_READING = 3;
+}
+
+// Singleton learner profile: goal, mission, progress, streaks, milestones.
+message StudyProfile {
+  option (google.api.resource) = {
+    type: "fanti.app/StudyProfile"
+    pattern: "studyProfile"
+    singular: "studyProfile"
+    plural: "studyProfiles"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  Goal goal = 2;
+  // Why the learner studies, in their own words.
+  string mission = 3;
+
+  // Core-curriculum characters learned.
+  int32 learned_count = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Core curriculum size: the first 3,000 characters.
+  int32 course_size = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Estimated everyday-speech coverage 0..1 from learned characters.
+  double coverage = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  repeated Milestone milestones = 7 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Practice days as "YYYY-MM-DD" (local dates), most recent window.
+  repeated string practice_days = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
+  repeated LearningRecord records = 9 [(google.api.field_behavior) = OUTPUT_ONLY];
+  repeated ExamReadiness exam_readiness = 10 [(google.api.field_behavior) = OUTPUT_ONLY];
+  CurriculumProgress curriculum_progress = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// An immersion milestone (what N characters unlock in real life).
+message Milestone {
+  int32 threshold = 1;
+  LocalizedText label = 2;
+  bool reached = 3;
+}
+
+// One row in the learning-records feed.
+message LearningRecord {
+  // "learned" or "milestone".
+  string type = 1;
+  // The character learned, when type is "learned".
+  string character = 2;
+  // The milestone threshold, when type is "milestone".
+  int32 milestone_threshold = 3;
+  google.protobuf.Timestamp record_time = 4;
+}
+
+// Readiness toward one exam level.
+message ExamReadiness {
+  // e.g. "HSK 1", "TOCFL A2".
+  string level = 1;
+  // 0..1.
+  double progress = 2;
+}
+
+// A sentence mined from reading, quizzed as fill-in-the-blank.
+message ClozeCard {
+  option (google.api.resource) = {
+    type: "fanti.app/ClozeCard"
+    pattern: "clozeCards/{cloze_card}"
+    singular: "clozeCard"
+    plural: "clozeCards"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  // The character blanked out.
+  string character = 2 [(google.api.field_behavior) = REQUIRED];
+  // The full sentence containing the character.
+  string sentence = 3 [(google.api.field_behavior) = REQUIRED];
+}
+
+// Quiz question kinds, mirroring the design's mixed drill.
+enum QuestionType {
+  QUESTION_TYPE_UNSPECIFIED = 0;
+  // How is this read? (pinyin options)
+  QUESTION_TYPE_READING = 1;
+  // Which tone do you hear? (audio)
+  QUESTION_TYPE_TONE = 2;
+  // Write it from memory (canvas).
+  QUESTION_TYPE_WRITE = 3;
+  // Type it with your own IME.
+  QUESTION_TYPE_TYPE = 4;
+  // What does it mean? (meaning options)
+  QUESTION_TYPE_MEANING = 5;
+  // Which character do you hear? (audio + glyph options)
+  QUESTION_TYPE_LISTEN = 6;
+  // Simplified or Traditional?
+  QUESTION_TYPE_SCRIPT = 7;
+  // Pick the Simplified form.
+  QUESTION_TYPE_MATCH = 8;
+  // Fill in the blank from a saved reading sentence.
+  QUESTION_TYPE_CLOZE = 9;
+}
+
+// One quiz question. Correct answers stay server-side; the client submits
+// and receives a verdict.
+message QuizQuestion {
+  QuestionType type = 1;
+  // Glyph, cloze sentence with ＿, or empty for audio questions.
+  string prompt = 2;
+  // The character under test. Needed client-side for WRITE (ghost/reveal)
+  // and TYPE (feedback rendering).
+  string character = 3;
+  // Text to speak via TTS for TONE and LISTEN questions.
+  string tts_text = 4;
+  // Choice labels for option questions; empty for WRITE and TYPE.
+  repeated string options = 5;
+}
+
+// A quiz in progress. The resource id is server-generated.
+message Quiz {
+  option (google.api.resource) = {
+    type: "fanti.app/Quiz"
+    pattern: "quizzes/{quiz}"
+    singular: "quiz"
+    plural: "quizzes"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  repeated QuizQuestion questions = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 current_index = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 score = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  bool finished = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Characters answered wrong this session.
+  repeated string mistakes = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Set when this quiz consolidates a lesson for one new character.
+  string lesson_character = 7;
+}
+
+// Which characters seed a quiz.
+enum QuizPool {
+  QUIZ_POOL_UNSPECIFIED = 0;
+  // The whole active deck.
+  QUIZ_POOL_ALL = 1;
+  // Characters with recorded mistakes.
+  QUIZ_POOL_WEAK = 2;
+  // Short consolidation quiz for one lesson character.
+  QUIZ_POOL_LESSON = 3;
+}
+
+// A due flashcard: the character plus its SRS state.
+message DueCard {
+  Character character = 1;
+  Review review = 2;
+}
+
+// Card deck flavor.
+enum CardMode {
+  CARD_MODE_UNSPECIFIED = 0;
+  CARD_MODE_CHARACTER = 1;
+  CARD_MODE_WORD = 2;
+}
+
+// Today's three-step lesson.
+message Lesson {
+  // Weak characters to warm up on.
+  repeated Character weak_characters = 1;
+  // The one new character to meet.
+  Character next_character = 2;
+}
+
+message ListDueCardsRequest {
+  CardMode mode = 1;
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message ListDueCardsResponse {
+  repeated DueCard due_cards = 1;
+  string next_page_token = 2;
+  // Cards due now across the whole deck.
+  int32 due_count = 3;
+}
+
+message GradeCardRequest {
+  // reviews/{character}
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Review"}
+  ];
+  Grade grade = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+message GetReviewRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Review"}
+  ];
+}
+
+message UpdateReviewRequest {
+  Review review = 1 [(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+message MarkLearnedRequest {
+  // characters/{character}
+  string character = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Character"}
+  ];
+}
+
+message AddToDeckRequest {
+  // characters/{character}
+  string character = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Character"}
+  ];
+}
+
+message CreateQuizRequest {
+  QuizPool pool = 1;
+  // Required when pool is QUIZ_POOL_LESSON.
+  string lesson_character = 2;
+}
+
+message SubmitQuizAnswerRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Quiz"}
+  ];
+  int32 question_index = 2;
+
+  // The answer, shaped by question type.
+  oneof answer {
+    // Index into options.
+    int32 option_index = 3;
+    // IME-typed text for TYPE questions.
+    string typed_text = 4;
+    // Self-assessment for WRITE questions.
+    bool self_correct = 5;
+  }
+}
+
+message SubmitQuizAnswerResponse {
+  bool correct = 1;
+  // The correct option index or character, for feedback display.
+  string correct_answer = 2;
+  // Tutor explanation of the miss; empty when correct.
+  LocalizedText feedback = 3;
+  Quiz quiz = 4;
+}
+
+message GetStudyProfileRequest {
+  // Must be "studyProfile".
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/StudyProfile"}
+  ];
+}
+
+message UpdateStudyProfileRequest {
+  StudyProfile study_profile = 1 [(google.api.field_behavior) = REQUIRED];
+  google.protobuf.FieldMask update_mask = 2 [(google.api.field_behavior) = REQUIRED];
+}
+
+message RecordPracticeRequest {
+  // Local date "YYYY-MM-DD" to mark practiced.
+  string day = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message CreateClozeCardRequest {
+  ClozeCard cloze_card = 1 [(google.api.field_behavior) = REQUIRED];
+}
+
+message ListClozeCardsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+}
+
+message ListClozeCardsResponse {
+  repeated ClozeCard cloze_cards = 1;
+  string next_page_token = 2;
+}
+
+message GetLessonRequest {}
+
+// One corpus sentence with its unlock state against the learner's
+// learned characters.
+message SpeakableSentence {
+  // Tatoeba sentence id (attribution — see NOTICES.md).
+  int64 id = 1;
+  string traditional = 2;
+  string english = 3;
+  // Characters the learner has not learned yet; empty when the sentence
+  // is fully unlocked.
+  repeated string missing_characters = 4;
+}
+
+message GetSpeakableSummaryRequest {}
+
+// What the learner can already say, and what is nearest to unlocking.
+message GetSpeakableSummaryResponse {
+  // Corpus sentences fully composed of learned characters.
+  int32 unlocked_count = 1;
+  // Corpus sentences considered.
+  int32 total_count = 2;
+  // A short sample of unlocked sentences, easiest first.
+  repeated SpeakableSentence sentences = 3;
+  // Locked sentences missing the fewest characters, nearest first.
+  repeated SpeakableSentence almost_unlocked = 4;
+  // Topics the learned characters cover.
+  repeated string topics = 5;
+}
+
+// Character-level mastery across the automatic learning path and manually
+// studied reference catalog.
+message CurriculumProgress {
+  int32 core_learned = 1 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 core_size = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 complete_learned = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 complete_size = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 reference_learned = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 reference_size = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// Spaced repetition, quizzes, streaks, and learner progress.
+service StudyService {
+  rpc ListDueCards(ListDueCardsRequest) returns (ListDueCardsResponse);
+  rpc GetReview(GetReviewRequest) returns (Review);
+  rpc UpdateReview(UpdateReviewRequest) returns (Review);
+  rpc GradeCard(GradeCardRequest) returns (Review);
+  rpc MarkLearned(MarkLearnedRequest) returns (Review);
+  // Adds a discovered character to the active deck (memory bank).
+  rpc AddToDeck(AddToDeckRequest) returns (Review);
+
+  rpc CreateQuiz(CreateQuizRequest) returns (Quiz);
+  rpc SubmitQuizAnswer(SubmitQuizAnswerRequest) returns (SubmitQuizAnswerResponse);
+
+  rpc GetStudyProfile(GetStudyProfileRequest) returns (StudyProfile);
+  // Updates goal and mission.
+  rpc UpdateStudyProfile(UpdateStudyProfileRequest) returns (StudyProfile);
+  // Marks a practice day (idempotent per day).
+  rpc RecordPractice(RecordPracticeRequest) returns (StudyProfile);
+
+  rpc CreateClozeCard(CreateClozeCardRequest) returns (ClozeCard);
+  rpc ListClozeCards(ListClozeCardsRequest) returns (ListClozeCardsResponse);
+
+  // Today's lesson: weak characters + the next new character.
+  rpc GetLesson(GetLessonRequest) returns (Lesson);
+
+  // What the learner's known characters unlock in the sentence corpus.
+  rpc GetSpeakableSummary(GetSpeakableSummaryRequest) returns (GetSpeakableSummaryResponse);
+}

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Fanti archive mark</title>
+  <desc id="desc">An open book in a red and gold seal.</desc>
+  <rect width="512" height="512" rx="96" fill="#761f1b"/>
+  <rect x="25" y="25" width="462" height="462" rx="76" fill="none" stroke="#d9b35f" stroke-width="18"/>
+  <rect x="50" y="50" width="412" height="412" rx="56" fill="none" stroke="#f3d991" stroke-width="5"/>
+  <path d="M104 151c57-18 108-4 152 34v205c-44-38-95-52-152-34V151Z" fill="#f4dfaa" stroke="#d9b35f" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M408 151c-57-18-108-4-152 34v205c44-38 95-52 152-34V151Z" fill="#f4dfaa" stroke="#d9b35f" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M256 185v205" fill="none" stroke="#9e772d" stroke-width="10" stroke-linecap="round"/>
+  <path d="M132 199c38-7 69 1 95 22M132 245c38-7 69 1 95 22M132 291c38-7 69 1 95 22" fill="none" stroke="#b38b3d" stroke-width="9" stroke-linecap="round"/>
+  <path d="M380 199c-38-7-69 1-95 22M380 245c-38-7-69 1-95 22M380 291c-38-7-69 1-95 22" fill="none" stroke="#b38b3d" stroke-width="9" stroke-linecap="round"/>
+  <circle cx="256" cy="119" r="31" fill="#387668" stroke="#f3d991" stroke-width="9"/>
+</svg>

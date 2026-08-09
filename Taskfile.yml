@@ -1,0 +1,73 @@
+version: "3"
+
+vars:
+  DB_URL: postgres://fanti:fanti@localhost:5433/fanti?sslmode=disable
+
+tasks:
+  fmt:
+    desc: Format everything
+    cmds:
+      - cd backend && golangci-lint fmt ./...
+      - cd web && bun run lint:fix
+
+  lint:
+    desc: Lint everything
+    cmds:
+      - cd backend && golangci-lint run ./...
+      - cd web && bun run lint
+      - cd web && bun run type:check
+
+  test:
+    desc: All tests
+    cmds:
+      - task: test:unit
+      - task: test:integration
+
+  test:unit:
+    desc: Backend unit tests (short) + web tests
+    cmds:
+      - cd backend && go test -short -json ./... | go run github.com/mfridman/tparse@v0.18.0 -all
+      - cd web && bun run test
+
+  test:integration:
+    desc: Backend integration tests (embedded postgres)
+    cmds:
+      - cd backend && go test -run Integration -json ./... | go run github.com/mfridman/tparse@v0.18.0 -all
+
+  generate:
+    desc: Regenerate protobuf code (Go + TS)
+    cmds:
+      - buf generate
+
+  dev:db:
+    desc: Start Postgres
+    cmds:
+      - docker compose up -d db
+
+  dev:backend:
+    desc: Run the API server against local Postgres
+    cmds:
+      - cd backend && go run ./cmd/fanti serve
+
+  dev:web:
+    desc: Run the Rsbuild dev server
+    cmds:
+      - cd web && bun run dev
+
+  db:reset:
+    desc: "Reset the dev DB to the seed baseline (wipes progress — take task backup first)"
+    prompt: This drops all dev data — reviews, imported books, study progress. Continue?
+    cmds:
+      - docker compose exec -T db psql -U fanti fanti -c "DROP SCHEMA public CASCADE; CREATE SCHEMA public;"
+      - cd backend && go run ./cmd/fanti seed
+
+  backup:
+    desc: Dump learning data to backups/
+    cmds:
+      - mkdir -p backups
+      - docker compose exec -T db pg_dump -U fanti fanti > backups/fanti-$(date +%Y%m%d-%H%M%S).sql
+
+  restore:
+    desc: "Restore a dump: task restore -- backups/<file>.sql"
+    cmds:
+      - docker compose exec -T db psql -U fanti fanti < {{.CLI_ARGS}}

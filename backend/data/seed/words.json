@@ -1,0 +1,74 @@
+[
+  {
+    "word": "你好",
+    "pinyin": "nǐ hǎo",
+    "pos": "phrase",
+    "meaning": "hello",
+    "simplified": "你好",
+    "traditional": "你好",
+    "story": "The first word everyone learns — literally “you good”."
+  },
+  {
+    "word": "謝謝",
+    "pinyin": "xièxie",
+    "pos": "phrase",
+    "meaning": "thank you",
+    "simplified": "谢谢",
+    "traditional": "謝謝",
+    "story": "言 (speech) beside 射 — thanks delivered in words. The second syllable goes neutral: xièxie, not xièxiè."
+  },
+  {
+    "word": "馬上",
+    "pinyin": "mǎshàng",
+    "pos": "adverb",
+    "meaning": "right away; immediately",
+    "simplified": "马上",
+    "traditional": "馬上",
+    "story": "Literally “on horseback” — in ancient China nothing moved faster than a mounted messenger."
+  },
+  {
+    "word": "火車站",
+    "pinyin": "huǒchēzhàn",
+    "pos": "noun",
+    "meaning": "train station",
+    "simplified": "火车站",
+    "traditional": "火車站",
+    "story": "Fire + vehicle + station: a “fire-cart stop”. Early steam trains really were fire carts."
+  },
+  {
+    "word": "好久不見",
+    "pinyin": "hǎojiǔ bújiàn",
+    "pos": "phrase",
+    "meaning": "long time no see",
+    "simplified": "好久不见",
+    "traditional": "好久不見",
+    "story": "Word for word: “very long no see” — the English phrase is widely said to be a calque of this."
+  },
+  {
+    "word": "珍珠奶茶",
+    "pinyin": "zhēnzhū nǎichá",
+    "pos": "noun",
+    "meaning": "bubble tea",
+    "simplified": "珍珠奶茶",
+    "traditional": "珍珠奶茶",
+    "story": "“Pearl milk tea” — invented in Taiwan; the tapioca balls are the 珍珠, pearls."
+  },
+  {
+    "word": "加油",
+    "pinyin": "jiāyóu",
+    "pos": "phrase",
+    "meaning": "you can do it! (cheer)",
+    "simplified": "加油",
+    "traditional": "加油",
+    "story": "Literally “add oil” — refuel! Shouted at races, exams, and friends having a hard week."
+  },
+  {
+    "word": "夜市",
+    "pinyin": "yèshì",
+    "pos": "noun",
+    "meaning": "night market",
+    "simplified": "夜市",
+    "traditional": "夜市",
+    "story": "Night + market. Where Taiwan actually eats dinner."
+  }
+]

@@ -1,0 +1,856 @@
+[
+  {
+    "traditional": "勢",
+    "simplified": "势",
+    "pinyin": "shì",
+    "zhuyin": "ㄕˋ",
+    "pos": "noun",
+    "meaning": "power; momentum; the way things trend",
+    "mappingStatus": "exact",
+    "strokeCount": 13,
+    "hskLevel": 6,
+    "frequencyRank": 800,
+    "topics": [
+      "work",
+      "culture"
+    ],
+    "story": "埶（種植）加上 力 — 力量如培植的幼苗般生長。Power that grows like a cultivated seedling.",
+    "mnemonic": "幼苗加上力氣，長成氣勢 — a seedling plus strength.",
+    "simplificationNote": "简「势」以「执」代「埶」。",
+    "radicalParts": [
+      {
+        "part": "埶",
+        "note": "種植 · planting"
+      },
+      {
+        "part": "力",
+        "note": "strength"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 4,
+        "chinese": "雨勢越來越大。",
+        "english": "The rain is getting heavier."
+      },
+      {
+        "hskLevel": 6,
+        "chinese": "他對局勢的判斷很準確。",
+        "english": "His read of the situation is precise."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "合",
+    "simplified": "合",
+    "pinyin": "hé",
+    "zhuyin": "ㄏㄜˊ",
+    "pos": "verb",
+    "meaning": "to join; to unite; to fit",
+    "mappingStatus": "exact",
+    "strokeCount": 6,
+    "hskLevel": 3,
+    "frequencyRank": 200,
+    "topics": [
+      "work"
+    ],
+    "story": "蓋子（亼）合上口 — 事物完滿契合。A lid closing over a mouth: things fitting together.",
+    "mnemonic": "蓋子剛好蓋住口 — a lid fitting a mouth.",
+    "simplificationNote": "簡繁同形。Same form in both scripts.",
+    "radicalParts": [
+      {
+        "part": "亼",
+        "note": "蓋 · lid"
+      },
+      {
+        "part": "口",
+        "note": "mouth"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 2,
+        "chinese": "我們合唱一首歌。",
+        "english": "We sing a song together."
+      },
+      {
+        "hskLevel": 5,
+        "chinese": "雙方達成了合作協議。",
+        "english": "The two sides reached a cooperation agreement."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "秦",
+    "simplified": "秦",
+    "pinyin": "qín",
+    "zhuyin": "ㄑㄧㄣˊ",
+    "pos": "proper",
+    "meaning": "Qin — the first imperial dynasty",
+    "mappingStatus": "exact",
+    "strokeCount": 10,
+    "hskLevel": 0,
+    "frequencyRank": 2500,
+    "topics": [
+      "culture"
+    ],
+    "story": "雙手持杵舂禾 — 養活第一個帝國的沃土。Hands pounding grain: the land that fed the first empire.",
+    "mnemonic": "雙手舂禾的豐收景象 — hands pounding harvest grain.",
+    "simplificationNote": "簡繁同形。Same form in both scripts.",
+    "radicalParts": [
+      {
+        "part": "禾",
+        "note": "穀 · grain (doubled in early forms)"
+      },
+      {
+        "part": "廾",
+        "note": "雙手持杵 · hands with pestle"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 0,
+        "chinese": "秦是中國第一個帝國。",
+        "english": "Qin was China's first empire."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "漢",
+    "simplified": "汉",
+    "pinyin": "hàn",
+    "zhuyin": "ㄏㄢˋ",
+    "pos": "proper",
+    "meaning": "Han — dynasty; the Chinese people",
+    "mappingStatus": "exact",
+    "strokeCount": 14,
+    "hskLevel": 1,
+    "frequencyRank": 1200,
+    "topics": [
+      "culture"
+    ],
+    "story": "氵傍 漢水之名 — 简体「汉」只留下了水。Named for the Han River; Simplified keeps only the water.",
+    "mnemonic": "水在左，河名在右 — the river flows at its left.",
+    "simplificationNote": "简「汉」右部簡作「又」。",
+    "radicalParts": [
+      {
+        "part": "氵",
+        "note": "水部 · water radical"
+      },
+      {
+        "part": "堇",
+        "note": "聲符 phonetic"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 1,
+        "chinese": "我學漢語。",
+        "english": "I study Chinese."
+      },
+      {
+        "hskLevel": 5,
+        "chinese": "漢代的歷史很悠久。",
+        "english": "The Han dynasty has a long history."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "亂",
+    "simplified": "乱",
+    "pinyin": "luàn",
+    "zhuyin": "ㄌㄨㄢˋ",
+    "pos": "adj.",
+    "meaning": "chaos; disorder",
+    "mappingStatus": "exact",
+    "strokeCount": 13,
+    "hskLevel": 4,
+    "frequencyRank": 1100,
+    "topics": [
+      "culture"
+    ],
+    "story": "雙手在織機上理絲 — 繁體保留了整團亂絲，简体只剩一舌一鉤。Hands untangling silk on a loom.",
+    "mnemonic": "兩手在理一團亂絲 — hands in a tangle of silk.",
+    "simplificationNote": "简「乱」僅留「舌＋乚」。",
+    "radicalParts": [
+      {
+        "part": "爫",
+        "note": "手 · hand"
+      },
+      {
+        "part": "糸",
+        "note": "絲 · silk"
+      },
+      {
+        "part": "又",
+        "note": "手 · hand"
+      },
+      {
+        "part": "乚",
+        "note": "理絲鉤 · hook"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 3,
+        "chinese": "房間裡很亂。",
+        "english": "The room is messy."
+      },
+      {
+        "hskLevel": 6,
+        "chinese": "戰亂使百姓流離失所。",
+        "english": "War displaced the people."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "帝",
+    "simplified": "帝",
+    "pinyin": "dì",
+    "zhuyin": "ㄉㄧˋ",
+    "pos": "noun",
+    "meaning": "emperor; sovereign",
+    "mappingStatus": "exact",
+    "strokeCount": 9,
+    "hskLevel": 5,
+    "frequencyRank": 1300,
+    "topics": [
+      "culture"
+    ],
+    "story": "本為祭祀至高神的祭壇之形 — 後指人間至高者。Originally an altar to the highest god; later, the highest man.",
+    "mnemonic": "高高的祭壇立於天下 — a tall altar above all.",
+    "simplificationNote": "簡繁同形。Same form in both scripts.",
+    "radicalParts": [
+      {
+        "part": "帝",
+        "note": "祭壇象形 · altar pictograph"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 4,
+        "chinese": "秦始皇是第一位皇帝。",
+        "english": "Qin Shi Huang was the first emperor."
+      },
+      {
+        "hskLevel": 6,
+        "chinese": "帝國的版圖不斷擴大。",
+        "english": "The empire's territory kept expanding."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "馬",
+    "simplified": "马",
+    "pinyin": "mǎ",
+    "zhuyin": "ㄇㄚˇ",
+    "pos": "noun",
+    "meaning": "horse",
+    "mappingStatus": "exact",
+    "strokeCount": 10,
+    "hskLevel": 1,
+    "frequencyRank": 900,
+    "topics": [
+      "travel",
+      "culture"
+    ],
+    "story": "The oracle-bone form drew a standing horse — the dots at the base are its galloping legs and flowing mane.",
+    "mnemonic": "鬃毛與四蹄仍在奔跑 — the mane and four galloping hooves.",
+    "simplificationNote": "简「马」取自草書連筆，四足化為一橫。",
+    "radicalParts": [
+      {
+        "part": "馬",
+        "note": "象形 · pictograph of a horse"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 1,
+        "chinese": "我有一匹馬。",
+        "english": "I have a horse."
+      },
+      {
+        "hskLevel": 4,
+        "chinese": "別急，馬上就好。",
+        "english": "Don't worry — it will be ready right away."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": true
+  },
+  {
+    "traditional": "髮 · 發",
+    "simplified": "发",
+    "pinyin": "fà",
+    "zhuyin": "ㄈㄚˋ",
+    "pos": "noun",
+    "meaning": "hair (of the head)",
+    "mappingStatus": "ambiguous",
+    "strokeCount": 15,
+    "hskLevel": 3,
+    "frequencyRank": 1500,
+    "topics": [
+      "daily"
+    ],
+    "story": "Simplified 发 collapses two Traditional characters: 髮 (hair) and 發 (to issue). Context decides which to restore.",
+    "mnemonic": "髟像披散的長髮飄在頭上 — long hair streaming above.",
+    "simplificationNote": "简「发」與「發」合併，字形源自草書「發」。",
+    "radicalParts": [
+      {
+        "part": "髟",
+        "note": "長髮部 · long-hair radical"
+      },
+      {
+        "part": "犮",
+        "note": "bá · 聲符 phonetic"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 3,
+        "chinese": "她的頭髮很長。",
+        "english": "Her hair is very long."
+      },
+      {
+        "hskLevel": 5,
+        "chinese": "理完髮，他看起來精神多了。",
+        "english": "After the haircut he looks much sharper."
+      }
+    ],
+    "siblings": [
+      "發"
+    ],
+    "starterDeck": true
+  },
+  {
+    "traditional": "愛",
+    "simplified": "爱",
+    "pinyin": "ài",
+    "zhuyin": "ㄞˋ",
+    "pos": "verb",
+    "meaning": "to love; affection",
+    "mappingStatus": "exact",
+    "strokeCount": 13,
+    "hskLevel": 1,
+    "frequencyRank": 400,
+    "topics": [
+      "daily"
+    ],
+    "story": "The Traditional form keeps the 心 (heart) at its centre — Simplified 爱 removes it. Love, literally, with heart.",
+    "mnemonic": "中間藏著一顆心 — a heart hidden at the centre.",
+    "simplificationNote": "简「爱」以「友」取代「心＋夂」— 心被移除。",
+    "radicalParts": [
+      {
+        "part": "爫",
+        "note": "爪 · hand from above"
+      },
+      {
+        "part": "冖",
+        "note": "覆 · cover"
+      },
+      {
+        "part": "心",
+        "note": "heart"
+      },
+      {
+        "part": "夂",
+        "note": "足 · walking legs"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 1,
+        "chinese": "我愛我的家。",
+        "english": "I love my family."
+      },
+      {
+        "hskLevel": 5,
+        "chinese": "他熱愛傳統書法。",
+        "english": "He is passionate about traditional calligraphy."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": true
+  },
+  {
+    "traditional": "龍",
+    "simplified": "龙",
+    "pinyin": "lóng",
+    "zhuyin": "ㄌㄨㄥˊ",
+    "pos": "noun",
+    "meaning": "dragon",
+    "mappingStatus": "exact",
+    "strokeCount": 16,
+    "hskLevel": 5,
+    "frequencyRank": 1000,
+    "topics": [
+      "culture"
+    ],
+    "story": "An ancient pictograph of a serpentine dragon with a crowned head and writhing body — the emblem of imperial power.",
+    "mnemonic": "昂首擺尾的巨龍側影 — a rearing dragon in profile.",
+    "simplificationNote": "简「龙」為草書省形。",
+    "radicalParts": [
+      {
+        "part": "立",
+        "note": "冠 · crowned head"
+      },
+      {
+        "part": "月",
+        "note": "身 · body"
+      },
+      {
+        "part": "⺒",
+        "note": "尾 · coiling tail"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 2,
+        "chinese": "今年是龍年。",
+        "english": "This year is the year of the dragon."
+      },
+      {
+        "hskLevel": 6,
+        "chinese": "故宮收藏著一件清代龍袍。",
+        "english": "The Palace Museum keeps a Qing-dynasty dragon robe."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": true
+  },
+  {
+    "traditional": "書",
+    "simplified": "书",
+    "pinyin": "shū",
+    "zhuyin": "ㄕㄨ",
+    "pos": "noun",
+    "meaning": "book; to write",
+    "mappingStatus": "exact",
+    "strokeCount": 10,
+    "hskLevel": 1,
+    "frequencyRank": 300,
+    "topics": [
+      "culture",
+      "work"
+    ],
+    "story": "Originally a hand (聿) holding a brush above 曰 (to speak) — writing down the spoken word.",
+    "mnemonic": "一隻手握筆寫在簡上 — a hand writing with a brush.",
+    "simplificationNote": "简「书」取草書輪廓。",
+    "radicalParts": [
+      {
+        "part": "聿",
+        "note": "手執筆 · hand holding brush"
+      },
+      {
+        "part": "曰",
+        "note": "言 · speech"
+      }
+    ],
+    "examples": [
+      {
+        "hskLevel": 1,
+        "chinese": "我在看書。",
+        "english": "I am reading."
+      },
+      {
+        "hskLevel": 4,
+        "chinese": "這本書的內容很豐富。",
+        "english": "This book is rich in content."
+      }
+    ],
+    "siblings": [],
+    "starterDeck": true
+  },
+  {
+    "traditional": "出",
+    "simplified": "出",
+    "pinyin": "chū",
+    "zhuyin": "",
+    "pos": "verb",
+    "meaning": "to exit; to go out",
+    "mappingStatus": "exact",
+    "strokeCount": 5,
+    "hskLevel": 1,
+    "frequencyRank": 28,
+    "topics": [
+      "street",
+      "travel"
+    ],
+    "story": "一隻腳跨出洞口 — a foot stepping out of a cave. 出口 = EXIT, the sign you'll meet everywhere.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "入",
+    "simplified": "入",
+    "pinyin": "rù",
+    "zhuyin": "",
+    "pos": "verb",
+    "meaning": "to enter",
+    "mappingStatus": "exact",
+    "strokeCount": 2,
+    "hskLevel": 1,
+    "frequencyRank": 180,
+    "topics": [
+      "street"
+    ],
+    "story": "箭頭般沒入 — an arrowhead slipping in. 入口 = entrance.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "站",
+    "simplified": "站",
+    "pinyin": "zhàn",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "station; to stand",
+    "mappingStatus": "exact",
+    "strokeCount": 10,
+    "hskLevel": 3,
+    "frequencyRank": 500,
+    "topics": [
+      "travel"
+    ],
+    "story": "立（站立）加 占 — standing at your stop. 車站 = station.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "車",
+    "simplified": "车",
+    "pinyin": "chē",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "vehicle; car",
+    "mappingStatus": "exact",
+    "strokeCount": 7,
+    "hskLevel": 1,
+    "frequencyRank": 360,
+    "topics": [
+      "travel"
+    ],
+    "story": "從上看的戰車 — a chariot seen from above: axle and wheels.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "門",
+    "simplified": "门",
+    "pinyin": "mén",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "door; gate",
+    "mappingStatus": "exact",
+    "strokeCount": 8,
+    "hskLevel": 1,
+    "frequencyRank": 185,
+    "topics": [
+      "street",
+      "daily"
+    ],
+    "story": "兩扇對開的門 — a pair of swinging doors.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "水",
+    "simplified": "水",
+    "pinyin": "shuǐ",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "water",
+    "mappingStatus": "exact",
+    "strokeCount": 4,
+    "hskLevel": 1,
+    "frequencyRank": 200,
+    "topics": [
+      "daily",
+      "food"
+    ],
+    "story": "中流與兩岸水花 — a stream with splashes on both banks.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "火",
+    "simplified": "火",
+    "pinyin": "huǒ",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "fire",
+    "mappingStatus": "exact",
+    "strokeCount": 4,
+    "hskLevel": 1,
+    "frequencyRank": 440,
+    "topics": [
+      "daily"
+    ],
+    "story": "躍動的火焰 — leaping flames.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "山",
+    "simplified": "山",
+    "pinyin": "shān",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "mountain",
+    "mappingStatus": "exact",
+    "strokeCount": 3,
+    "hskLevel": 1,
+    "frequencyRank": 259,
+    "topics": [
+      "travel"
+    ],
+    "story": "三座山峰 — three peaks. See the shape, remember the word.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "上",
+    "simplified": "上",
+    "pinyin": "shàng",
+    "zhuyin": "",
+    "pos": "prep.",
+    "meaning": "up; on; above",
+    "mappingStatus": "exact",
+    "strokeCount": 3,
+    "hskLevel": 1,
+    "frequencyRank": 16,
+    "topics": [
+      "daily",
+      "work"
+    ],
+    "story": "橫線之上的記號 — a mark above the base line.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "心",
+    "simplified": "心",
+    "pinyin": "xīn",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "heart; mind",
+    "mappingStatus": "exact",
+    "strokeCount": 4,
+    "hskLevel": 1,
+    "frequencyRank": 90,
+    "topics": [
+      "daily"
+    ],
+    "story": "心房與心尖 — the chambers of a beating heart.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "法",
+    "simplified": "法",
+    "pinyin": "fǎ",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "method; law",
+    "mappingStatus": "exact",
+    "strokeCount": 8,
+    "hskLevel": 3,
+    "frequencyRank": 65,
+    "topics": [
+      "work"
+    ],
+    "story": "氵加 去 — law should sit as level as water.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "錢",
+    "simplified": "钱",
+    "pinyin": "qián",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "money",
+    "mappingStatus": "exact",
+    "strokeCount": 16,
+    "hskLevel": 1,
+    "frequencyRank": 600,
+    "topics": [
+      "daily",
+      "work"
+    ],
+    "story": "金屬鑄成的錢 — metal (金) cast into coins.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "飯",
+    "simplified": "饭",
+    "pinyin": "fàn",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "rice; a meal",
+    "mappingStatus": "exact",
+    "strokeCount": 12,
+    "hskLevel": 1,
+    "frequencyRank": 940,
+    "topics": [
+      "food"
+    ],
+    "story": "食字旁端上一餐 — the food radical serves the meal. 吃飯 = to eat.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "茶",
+    "simplified": "茶",
+    "pinyin": "chá",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "tea",
+    "mappingStatus": "exact",
+    "strokeCount": 9,
+    "hskLevel": 1,
+    "frequencyRank": 1000,
+    "topics": [
+      "food"
+    ],
+    "story": "人在草木之間 — a person between grass and trees.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "會",
+    "simplified": "会",
+    "pinyin": "huì",
+    "zhuyin": "",
+    "pos": "verb",
+    "meaning": "to meet; can",
+    "mappingStatus": "exact",
+    "strokeCount": 13,
+    "hskLevel": 1,
+    "frequencyRank": 30,
+    "topics": [
+      "work"
+    ],
+    "story": "蓋子下眾物相聚 — things gathering under one lid. 開會 = meeting.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "班",
+    "simplified": "班",
+    "pinyin": "bān",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "shift; class",
+    "mappingStatus": "exact",
+    "strokeCount": 10,
+    "hskLevel": 3,
+    "frequencyRank": 700,
+    "topics": [
+      "work"
+    ],
+    "story": "玉分兩半 — jade split for duty rotas. 上班 = go to work.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  },
+  {
+    "traditional": "單",
+    "simplified": "单",
+    "pinyin": "dān",
+    "zhuyin": "",
+    "pos": "noun",
+    "meaning": "list; form; single",
+    "mappingStatus": "exact",
+    "strokeCount": 12,
+    "hskLevel": 3,
+    "frequencyRank": 480,
+    "topics": [
+      "food",
+      "work"
+    ],
+    "story": "菜單、帳單、訂單 — the lists daily life runs on.",
+    "mnemonic": "",
+    "simplificationNote": "",
+    "radicalParts": [],
+    "examples": [],
+    "siblings": [],
+    "starterDeck": false
+  }
+]

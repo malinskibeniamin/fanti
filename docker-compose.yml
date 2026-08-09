@@ -1,0 +1,49 @@
+services:
+  app:
+    build: .
+    ports:
+      - "127.0.0.1:8080:8080"
+    environment:
+      FANTI_DATABASE_URL: postgres://fanti:fanti@db:5432/fanti?sslmode=disable
+    volumes:
+      - fanti-blobs:/app/data
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # Querylane (dogfood) — Postgres admin UI over the fanti database,
+  # jobhose-style. Builds from the sibling checkout; metadata lives in a
+  # separate `querylane` database on the same Postgres server.
+  querylane:
+    build: ../querylane
+    profiles: [admin]
+    ports:
+      - "127.0.0.1:8081:8080"
+    environment:
+      QUERYLANE_DATABASE_DSN: postgres://fanti:fanti@db:5432/querylane?sslmode=disable
+      # Dev-only key; encrypts registered instance credentials at rest.
+      QUERYLANE_INSTANCE_SECRET_KEY: sha256:fanti-local-dev
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: fanti
+      POSTGRES_PASSWORD: fanti
+      POSTGRES_DB: fanti
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - fanti-db:/var/lib/postgresql/data
+      - ./deploy/init-querylane-db.sql:/docker-entrypoint-initdb.d/10-querylane.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fanti -d fanti"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  fanti-db:
+  fanti-blobs:

@@ -1,0 +1,60 @@
+syntax = "proto3";
+
+package fanti.v1;
+
+import "fanti/v1/common.proto";
+import "google/api/field_behavior.proto";
+
+// A drawn stroke as an ordered point sequence in canvas coordinates.
+message Stroke {
+  repeated Point points = 1;
+}
+
+message Point {
+  float x = 1;
+  float y = 2;
+}
+
+message GradeHandwritingRequest {
+  // The character that was to be written (traditional form).
+  string character = 1 [(google.api.field_behavior) = REQUIRED];
+  repeated Stroke strokes = 2 [(google.api.field_behavior) = REQUIRED];
+  // Canvas dimensions the points were captured on.
+  int32 canvas_width = 3 [(google.api.field_behavior) = REQUIRED];
+  int32 canvas_height = 4 [(google.api.field_behavior) = REQUIRED];
+  PracticeDifficulty practice_difficulty = 5 [(google.api.field_behavior) = REQUIRED];
+  bool hint_used = 6;
+}
+
+message GradeHandwritingResponse {
+  bool correct = 1;
+  // Expected stroke count from the reference data.
+  int32 expected_strokes = 2;
+  int32 got_strokes = 3;
+  // 1-based indexes of strokes with wrong start point or direction.
+  repeated int32 bad_strokes = 4;
+  // Tutor critique of the attempt.
+  LocalizedText feedback = 5;
+}
+
+message ExplainMistakeRequest {
+  // The character under test (traditional form).
+  string character = 1 [(google.api.field_behavior) = REQUIRED];
+  // What the learner answered (typed text or chosen option).
+  string given_answer = 2;
+  // What kind of question was missed, e.g. "type", "reading", "tone".
+  string question_type = 3;
+}
+
+message ExplainMistakeResponse {
+  LocalizedText explanation = 1;
+}
+
+// Rule-based tutor feedback (LLM-backed implementation can replace it
+// behind the same contract).
+service TutorService {
+  // Grades canvas strokes against reference stroke medians.
+  rpc GradeHandwriting(GradeHandwritingRequest) returns (GradeHandwritingResponse);
+  // Explains why an answer was wrong (sibling characters, tones, lookalikes).
+  rpc ExplainMistake(ExplainMistakeRequest) returns (ExplainMistakeResponse);
+}

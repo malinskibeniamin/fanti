@@ -1,0 +1,334 @@
+syntax = "proto3";
+
+package fanti.v1;
+
+import "fanti/v1/common.proto";
+import "google/api/field_behavior.proto";
+import "google/api/resource.proto";
+
+// A CC-CEDICT dictionary entry (word or single character).
+message Entry {
+  option (google.api.resource) = {
+    type: "fanti.app/Entry"
+    pattern: "entries/{entry}"
+    singular: "entry"
+    plural: "entries"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  string traditional = 2;
+  string simplified = 3;
+  string pinyin = 4;
+  repeated string definitions = 5;
+}
+
+// Whether an entry participates in the automatic curriculum.
+enum CharacterCatalogKind {
+  CHARACTER_CATALOG_KIND_UNSPECIFIED = 0;
+  // CC-CEDICT-backed entry with reading and meaning.
+  CHARACTER_CATALOG_KIND_CURRICULUM = 1;
+  // Mandarin-readable long-tail glyph without a CC-CEDICT meaning.
+  CHARACTER_CATALOG_KIND_REFERENCE = 2;
+}
+
+// Source-backed availability for one part of character knowledge.
+enum CapabilityStatus {
+  CAPABILITY_STATUS_UNSPECIFIED = 0;
+  CAPABILITY_STATUS_AVAILABLE = 1;
+  // The capability does not make sense for this form, e.g. decomposing
+  // an atomic component into itself.
+  CAPABILITY_STATUS_NOT_APPLICABLE = 2;
+  // The current pinned sources do not provide the data.
+  CAPABILITY_STATUS_UNAVAILABLE = 3;
+}
+
+// One independently sourced kind of character knowledge.
+enum CharacterCapability {
+  CHARACTER_CAPABILITY_UNSPECIFIED = 0;
+  CHARACTER_CAPABILITY_READING = 1;
+  CHARACTER_CAPABILITY_MEANING = 2;
+  CHARACTER_CAPABILITY_STROKES = 3;
+  CHARACTER_CAPABILITY_COMPONENTS = 4;
+  CHARACTER_CAPABILITY_HISTORY = 5;
+}
+
+// Capability state. Reading and meaning apply to the learning entry;
+// strokes, components, and history apply to an individual glyph.
+message CharacterCapabilities {
+  CapabilityStatus reading = 1;
+  CapabilityStatus meaning = 2;
+  CapabilityStatus strokes = 3;
+  CapabilityStatus components = 4;
+  CapabilityStatus history = 5;
+}
+
+// One CC-CEDICT reading-and-meaning record retained for the entry.
+message CharacterSense {
+  string simplified = 1;
+  string pinyin = 2;
+  repeated string definitions = 3;
+}
+
+// One traditional, simplified, shared, or unclassified glyph related to
+// the canonical learning entry.
+message CharacterGlyph {
+  string glyph = 1;
+  // Empty for Unihan-only glyphs whose script relationship is unknown.
+  // Shared forms contain both simplified and traditional.
+  repeated Script scripts = 2;
+  // True for the traditional glyph that keys the learning entry.
+  bool primary = 3;
+  CharacterCapabilities capabilities = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// A character with curated learning content — the character-page resource.
+// The resource id is the traditional form itself: characters/馬.
+message Character {
+  option (google.api.resource) = {
+    type: "fanti.app/Character"
+    pattern: "characters/{character}"
+    singular: "character"
+    plural: "characters"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+
+  string traditional = 2;
+  string simplified = 3;
+  string pinyin = 4;
+  string zhuyin = 5;
+
+  // Part of speech, e.g. "noun".
+  string pos = 6;
+  string meaning = 7;
+  // Simplified⇄Traditional mapping confidence for the badge.
+  MappingStatus mapping_status = 8;
+
+  int32 stroke_count = 9;
+  // 0 when unlevelled (proper names).
+  int32 hsk_level = 10;
+  // Common-usage frequency rank; 0 when unranked.
+  int32 frequency_rank = 11;
+  // Practical topics, e.g. "street", "food", "travel", "daily", "work", "culture".
+  repeated string topics = 12;
+
+  // Origin story (mixed-script authored copy).
+  string story = 13;
+  // Shape mnemonic line.
+  string mnemonic = 14;
+  // Note on how the simplified form relates (草書 origin etc.).
+  string simplification_note = 15;
+  repeated RadicalPart radical_parts = 16;
+  repeated ExampleSentence examples = 17;
+  // Characters sharing the same simplified form (髮 ↔ 發).
+  repeated string siblings = 18;
+
+  // Whether the learner has marked this character learned.
+  bool learned = 19 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Times answered wrong in quizzes; 0 when never missed.
+  int32 mistake_count = 20 [(google.api.field_behavior) = OUTPUT_ONLY];
+
+  CharacterCatalogKind catalog_kind = 21 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Dense automatic-curriculum position. 0 for reference entries.
+  int32 curriculum_rank = 22 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Every matching single-character CC-CEDICT sense, in source order.
+  repeated CharacterSense senses = 23 [(google.api.field_behavior) = OUTPUT_ONLY];
+  repeated CharacterGlyph glyphs = 24 [(google.api.field_behavior) = OUTPUT_ONLY];
+  CharacterCapabilities entry_capabilities = 25 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// One step in a character's visual development.
+enum CharacterFormStage {
+  CHARACTER_FORM_STAGE_UNSPECIFIED = 0;
+  CHARACTER_FORM_STAGE_ORACLE = 1;
+  CHARACTER_FORM_STAGE_BRONZE = 2;
+  CHARACTER_FORM_STAGE_SEAL = 3;
+  CHARACTER_FORM_STAGE_CLERICAL = 4;
+  CHARACTER_FORM_STAGE_REGULAR = 5;
+}
+
+message CharacterForm {
+  CharacterFormStage stage = 1;
+  // False when the source has no attested form for this stage.
+  bool available = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Public-domain or CC0 SVG bytes. Empty for gaps and the locally rendered
+  // regular-script form.
+  bytes svg = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  string source_title = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  string source_url = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  string license = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// The fixed five-stage visual history attached to one character.
+message CharacterHistory {
+  option (google.api.resource) = {
+    type: "fanti.app/CharacterHistory"
+    pattern: "characters/{character}/history"
+    singular: "characterHistory"
+    plural: "characterHistories"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+  repeated CharacterForm forms = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// One structural component of a character.
+message RadicalPart {
+  // The component glyph, e.g. 氵.
+  string part = 1;
+  // Its role, e.g. "水部 · water radical".
+  string note = 2;
+}
+
+// A multi-character word built from known characters (火 + 山 = 火山).
+message Compound {
+  string word = 1;
+  string pinyin = 2;
+  // Component characters as characters/{character} names.
+  repeated string characters = 3 [(google.api.resource_reference) = {type: "fanti.app/Character"}];
+  string gloss = 4;
+  // True when every component character is learned.
+  bool unlocked = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+message GetCharacterRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Character"}
+  ];
+}
+
+message GetCharacterHistoryRequest {
+  // characters/{character}/history
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/CharacterHistory"}
+  ];
+}
+
+message GetStrokeDataRequest {
+  // characters/{character}
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Character"}
+  ];
+}
+
+message GetStrokeDataResponse {
+  // Raw hanzi-writer per-character JSON, consumed verbatim by the
+  // renderer's charDataLoader: {"strokes": ["<svg path d>", ...],
+  // "medians": [[[x, y], ...], ...]} in a 1024-unit box.
+  string data = 1;
+}
+
+message ListCharactersRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  // AIP-160 filter, e.g. `topic = "food" AND hsk_level <= 2` or `learned = true`.
+  string filter = 3;
+  // Free-text search over pinyin, meaning, and the glyphs themselves.
+  string query = 4;
+  // Sort: "frequency_rank", "hsk_level", or "" for curriculum order.
+  string order_by = 5;
+}
+
+message ListCharactersResponse {
+  repeated Character characters = 1;
+  string next_page_token = 2;
+  int32 total_size = 3;
+}
+
+// One aggregate availability row in the catalog coverage dashboard.
+message CapabilityCoverage {
+  CharacterCapability capability = 1;
+  int32 available = 2;
+  int32 not_applicable = 3;
+  int32 unavailable = 4;
+}
+
+// Form-specific source coverage for one Chinese script.
+message ScriptCoverage {
+  Script script = 1;
+  int32 total_forms = 2;
+  repeated CapabilityCoverage capabilities = 3;
+}
+
+// Aggregate coverage of the pinned character catalog.
+message CharacterCoverage {
+  option (google.api.resource) = {
+    type: "fanti.app/CharacterCoverage"
+    pattern: "characterCoverage"
+    singular: "characterCoverage"
+    plural: "characterCoverages"
+  };
+
+  string name = 1 [(google.api.field_behavior) = IDENTIFIER];
+  int32 total_entries = 2 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 curriculum_entries = 3 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 reference_entries = 4 [(google.api.field_behavior) = OUTPUT_ONLY];
+  int32 core_entries = 5 [(google.api.field_behavior) = OUTPUT_ONLY];
+  repeated CapabilityCoverage entry_capabilities = 6 [(google.api.field_behavior) = OUTPUT_ONLY];
+  repeated ScriptCoverage scripts = 7 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Unihan-only forms whose simplified/traditional relationship is unknown.
+  int32 unclassified_forms = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // Distinct glyphs covered across Unihan and CC-CEDICT related forms.
+  int32 total_glyphs = 9 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+message GetCharacterCoverageRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/CharacterCoverage"}
+  ];
+}
+
+message GetEntryRequest {
+  string name = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (google.api.resource_reference) = {type: "fanti.app/Entry"}
+  ];
+}
+
+message SearchEntriesRequest {
+  string query = 1 [(google.api.field_behavior) = REQUIRED];
+  int32 page_size = 2;
+  string page_token = 3;
+}
+
+message SearchEntriesResponse {
+  repeated Entry entries = 1;
+  string next_page_token = 2;
+}
+
+message ListCompoundsRequest {
+  int32 page_size = 1;
+  string page_token = 2;
+  // When true, only compounds whose components are all learned.
+  bool unlocked_only = 3;
+}
+
+message ListCompoundsResponse {
+  repeated Compound compounds = 1;
+  string next_page_token = 2;
+  // Compounds unlocked / total.
+  int32 unlocked_count = 3;
+  int32 total_size = 4;
+}
+
+// CC-CEDICT-backed dictionary and curated character knowledge.
+service DictionaryService {
+  rpc GetCharacter(GetCharacterRequest) returns (Character);
+  rpc GetCharacterHistory(GetCharacterHistoryRequest) returns (CharacterHistory);
+  rpc ListCharacters(ListCharactersRequest) returns (ListCharactersResponse);
+  rpc GetCharacterCoverage(GetCharacterCoverageRequest) returns (CharacterCoverage);
+
+  // Stroke outlines + medians for animation; NOT_FOUND when the
+  // character has no stroke data.
+  rpc GetStrokeData(GetStrokeDataRequest) returns (GetStrokeDataResponse);
+
+  rpc GetEntry(GetEntryRequest) returns (Entry);
+  rpc SearchEntries(SearchEntriesRequest) returns (SearchEntriesResponse);
+
+  rpc ListCompounds(ListCompoundsRequest) returns (ListCompoundsResponse);
+}
