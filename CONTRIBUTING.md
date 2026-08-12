@@ -20,6 +20,10 @@ task dev:web
 The local app is available at `http://localhost:3000`. Local database credentials in
 `README.md` and `docker-compose.yml` are development-only values.
 
+Before destructive database work, run `task backup` and keep the reported `.dump` file.
+Use `task restore -- backups/<file>.dump` to prevalidate an archive, create a recovery
+backup, and restore it. See `README.md` for rollback behavior.
+
 ## Make a change
 
 Write a failing test before changing behavior. Keep unit and integration tests beside the

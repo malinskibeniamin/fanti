@@ -35,6 +35,30 @@ Browser verification and the e2e suite mutate the shared dev database; `task db:
 returns it to a clean seed baseline in one command. Real study progress should be saved
 with `task backup` (and restored with `task restore`) before resetting.
 
+## Back up and restore
+
+Fanti keeps imported books, reading progress, and study history in Postgres. Create a
+validated custom-format archive before upgrades or database maintenance:
+
+```sh
+task backup
+```
+
+The command writes an atomically completed `.dump` file under `backups/` and prints its
+path. An incomplete or invalid dump is deleted rather than left looking usable.
+
+Restore one of those archives with:
+
+```sh
+task restore -- backups/fanti-<timestamp>-<id>.dump
+```
+
+Restore validates the archive before changing the database, requires typing `RESTORE`,
+and saves a second `-pre-restore.dump` recovery archive. The Compose app is paused during
+the database replacement and restarted afterward. If the requested restore fails, Fanti
+automatically restores the recovery archive and exits with an error. Keep the reported
+recovery archive until the restored data has been checked.
+
 ## Local Docker
 
 ```sh
