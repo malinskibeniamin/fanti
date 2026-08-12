@@ -83,8 +83,23 @@ jobs:
         working-directory: backend
         # CEDICT and stroke data are large downloads the specs tolerate
         # missing (E2E_LEAN_SEED). The vendored Tatoeba derivative powers
-        # frequency ranks and examples, so it stays in.
+          # frequency ranks and examples, so it stays in.
         run: go run ./cmd/fanti seed --skip-cedict --skip-strokes --skip-history
+      - name: Verify database backup and restore
+        env:
+          FANTI_BACKUP_DIR: /tmp/fanti-recovery
+        run: |
+          docker compose exec -T db psql -v ON_ERROR_STOP=1 -U fanti -d fanti <<'SQL'
+          CREATE TABLE archive_smoke (id integer PRIMARY KEY, value text NOT NULL);
+          INSERT INTO archive_smoke (id, value) VALUES (1, 'baseline');
+          SQL
+          archive=$(./deploy/database-archive.sh backup /tmp/fanti-backups)
+          docker compose exec -T db psql -v ON_ERROR_STOP=1 -U fanti -d fanti \
+            -c "UPDATE archive_smoke SET value = 'mutated' WHERE id = 1"
+          printf 'RESTORE\n' | ./deploy/database-archive.sh restore "$archive"
+          restored=$(docker compose exec -T db psql -At -U fanti -d fanti \
+            -c 'SELECT value FROM archive_smoke WHERE id = 1')
+          test "$restored" = baseline
       - name: Build API
         working-directory: backend
         run: go build -o /tmp/fanti-e2e-bin ./cmd/fanti

@@ -62,12 +62,11 @@ tasks:
       - cd backend && go run ./cmd/fanti seed
 
   backup:
-    desc: Dump learning data to backups/
+    desc: Create and validate an atomic database backup in backups/
     cmds:
-      - mkdir -p backups
-      - docker compose exec -T db pg_dump -U fanti fanti > backups/fanti-$(date +%Y%m%d-%H%M%S).sql
+      - ./deploy/database-archive.sh backup backups
 
   restore:
-    desc: "Restore a dump: task restore -- backups/<file>.sql"
+    desc: "Restore a validated backup with automatic rollback: task restore -- backups/<file>.dump"
     cmds:
-      - docker compose exec -T db psql -U fanti fanti < {{.CLI_ARGS}}
+      - ./deploy/database-archive.sh restore "{{.CLI_ARGS}}"
